@@ -1,11 +1,16 @@
 package trka;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Vozac {
+	@SerializedName(value = "ime", alternate = "givenName")
 	private String ime;
+	@SerializedName(value = "prezime", alternate = "familyName")
 	private String prezime;
 	private String tim;
 	private int poeni;
 	private int pobede;
+	@SerializedName(value = "drzava", alternate = "nationality")
 	private String drzava;
 	public String getIme() {
 		return ime;

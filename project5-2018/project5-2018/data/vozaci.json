@@ -1,0 +1,142 @@
+[
+  {
+    "ime": "Fernando",
+    "prezime": "Alonso",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Spanish"
+  },
+  {
+    "ime": "Valtteri",
+    "prezime": "Bottas",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Finnish"
+  },
+  {
+    "ime": "Marcus",
+    "prezime": "Ericsson",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Swedish"
+  },
+  {
+    "ime": "Pierre",
+    "prezime": "Gasly",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "French"
+  },
+  {
+    "ime": "Romain",
+    "prezime": "Grosjean",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "French"
+  },
+  {
+    "ime": "Lewis",
+    "prezime": "Hamilton",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "British"
+  },
+  {
+    "ime": "Brendon",
+    "prezime": "Hartley",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "New Zealander"
+  },
+  {
+    "ime": "Nico",
+    "prezime": "Hülkenberg",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "German"
+  },
+  {
+    "ime": "Charles",
+    "prezime": "Leclerc",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Monegasque"
+  },
+  {
+    "ime": "Kevin",
+    "prezime": "Magnussen",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Danish"
+  },
+  {
+    "ime": "Esteban",
+    "prezime": "Ocon",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "French"
+  },
+  {
+    "ime": "Sergio",
+    "prezime": "Pérez",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Mexican"
+  },
+  {
+    "ime": "Kimi",
+    "prezime": "Räikkönen",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Finnish"
+  },
+  {
+    "ime": "Daniel",
+    "prezime": "Ricciardo",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Australian"
+  },
+  {
+    "ime": "Carlos",
+    "prezime": "Sainz",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Spanish"
+  },
+  {
+    "ime": "Sergey",
+    "prezime": "Sirotkin",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Russian"
+  },
+  {
+    "ime": "Lance",
+    "prezime": "Stroll",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Canadian"
+  },
+  {
+    "ime": "Stoffel",
+    "prezime": "Vandoorne",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Belgian"
+  },
+  {
+    "ime": "Max",
+    "prezime": "Verstappen",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Dutch"
+  },
+  {
+    "ime": "Sebastian",
+    "prezime": "Vettel",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "German"
+  }
+]
