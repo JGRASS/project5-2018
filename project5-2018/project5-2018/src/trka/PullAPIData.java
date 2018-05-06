@@ -18,13 +18,14 @@ import com.google.gson.JsonObject;
 
 public class PullAPIData {
 	public static final String DRIVERS_API_URL  = "http://ergast.com/api/f1/2018/drivers.json";
+	public static final String CONSTRUCTORS_API_URL  = "http://ergast.com/api/f1/2018/constructors.json";
 	public static void main(String[] args) {
 		try {
-			PullAPIData.serijalVozaceUJson(PullAPIData.deserijalVozaciAPI());
-			LinkedList<Vozac> v = new LinkedList<>();
-			v = PullAPIData.deserijalVozaceIzJson();
-			for (int i = 0; i < v.size(); i++) {
-				System.out.println(v.get(i));
+			PullAPIData.serijalTimoveUJson(PullAPIData.deserijalTimoviAPI());
+			LinkedList<Tim> t = new LinkedList<>();
+			t = PullAPIData.deserijalTimoveIzJson();
+			for (int i = 0; i < t.size(); i++) {
+				System.out.println(t.get(i));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -62,7 +63,7 @@ public class PullAPIData {
 			
 				JsonObject o =gson.fromJson(getContent(DRIVERS_API_URL), JsonObject.class);
 				JsonArray a = ((JsonObject) ((JsonObject) o.get("MRData")).get("DriverTable")).get("Drivers").getAsJsonArray();
-				System.out.println(a.size());
+//				System.out.println(a.size());
 				for (int i = 0; i < a.size(); i++) {
 					Vozac v1 = new Vozac();
 					JsonObject jo = a.get(i).getAsJsonObject();
@@ -92,6 +93,43 @@ public class PullAPIData {
 				v.add(gson.fromJson(a.get(i), Vozac.class));
 			}
 			return v;
+		}
+		public static LinkedList<Tim> deserijalTimoviAPI() throws Exception{
+			LinkedList<Tim> t = new LinkedList<Tim>();
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			
+				JsonObject o =gson.fromJson(getContent(CONSTRUCTORS_API_URL), JsonObject.class);
+				JsonArray a = ((JsonObject) ((JsonObject) o.get("MRData")).get("ConstructorTable")).get("Constructors").getAsJsonArray();
+//				System.out.println(a.size());
+				for (int i = 0; i < a.size(); i++) {
+					Tim t1 = new Tim();
+					JsonObject jo = a.get(i).getAsJsonObject();
+					t1 = gson.fromJson(jo, Tim.class);
+					t.add(t1);
+				}
+				return t;
+		}
+		public static void serijalTimoveUJson(LinkedList<Tim> t) throws Exception {
+			FileWriter writer = new FileWriter("data/timovi.json");
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			JsonArray a = new JsonArray();
+			for (int i = 0; i < t.size(); i++) {
+				String s = gson.toJson(t.get(i));
+				JsonObject o=gson.fromJson(s, JsonObject.class);
+				a.add(o);
+			}
+			writer.write(gson.toJson(a));
+			writer.close();
+		}
+		public static LinkedList<Tim> deserijalTimoveIzJson() throws Exception{
+			FileReader reader = new FileReader("data/timovi.json");
+			LinkedList<Tim> t = new LinkedList<>();
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			JsonArray a = gson.fromJson(reader, JsonArray.class);
+			for (int i = 0; i < a.size(); i++) {
+				t.add(gson.fromJson(a.get(i), Tim.class));
+			}
+			return t;
 		}
 		
 }

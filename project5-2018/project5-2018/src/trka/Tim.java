@@ -2,7 +2,10 @@ package trka;
 
 import java.util.LinkedList;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Tim {
+	@SerializedName(value="nazivTima", alternate="name")
 	private String nazivTima;
 	private LinkedList<Vozac> vozaci;
 	private int poeni;
