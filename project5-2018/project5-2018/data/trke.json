@@ -1,0 +1,128 @@
+[
+  {
+    "nazivTrke": "Australian Grand Prix",
+    "drzava": "Australia",
+    "datum": "2018-03-25",
+    "runda": 1
+  },
+  {
+    "nazivTrke": "Bahrain Grand Prix",
+    "drzava": "Bahrain",
+    "datum": "2018-04-08",
+    "runda": 2
+  },
+  {
+    "nazivTrke": "Chinese Grand Prix",
+    "drzava": "China",
+    "datum": "2018-04-15",
+    "runda": 3
+  },
+  {
+    "nazivTrke": "Azerbaijan Grand Prix",
+    "drzava": "Azerbaijan",
+    "datum": "2018-04-29",
+    "runda": 4
+  },
+  {
+    "nazivTrke": "Spanish Grand Prix",
+    "drzava": "Spain",
+    "datum": "2018-05-13",
+    "runda": 5
+  },
+  {
+    "nazivTrke": "Monaco Grand Prix",
+    "drzava": "Monaco",
+    "datum": "2018-05-27",
+    "runda": 6
+  },
+  {
+    "nazivTrke": "Canadian Grand Prix",
+    "drzava": "Canada",
+    "datum": "2018-06-10",
+    "runda": 7
+  },
+  {
+    "nazivTrke": "French Grand Prix",
+    "drzava": "France",
+    "datum": "2018-06-24",
+    "runda": 8
+  },
+  {
+    "nazivTrke": "Austrian Grand Prix",
+    "drzava": "Austria",
+    "datum": "2018-07-01",
+    "runda": 9
+  },
+  {
+    "nazivTrke": "British Grand Prix",
+    "drzava": "UK",
+    "datum": "2018-07-08",
+    "runda": 10
+  },
+  {
+    "nazivTrke": "German Grand Prix",
+    "drzava": "Germany",
+    "datum": "2018-07-22",
+    "runda": 11
+  },
+  {
+    "nazivTrke": "Hungarian Grand Prix",
+    "drzava": "Hungary",
+    "datum": "2018-07-29",
+    "runda": 12
+  },
+  {
+    "nazivTrke": "Belgian Grand Prix",
+    "drzava": "Belgium",
+    "datum": "2018-08-26",
+    "runda": 13
+  },
+  {
+    "nazivTrke": "Italian Grand Prix",
+    "drzava": "Italy",
+    "datum": "2018-09-02",
+    "runda": 14
+  },
+  {
+    "nazivTrke": "Singapore Grand Prix",
+    "drzava": "Singapore",
+    "datum": "2018-09-16",
+    "runda": 15
+  },
+  {
+    "nazivTrke": "Russian Grand Prix",
+    "drzava": "Russia",
+    "datum": "2018-09-30",
+    "runda": 16
+  },
+  {
+    "nazivTrke": "Japanese Grand Prix",
+    "drzava": "Japan",
+    "datum": "2018-10-07",
+    "runda": 17
+  },
+  {
+    "nazivTrke": "United States Grand Prix",
+    "drzava": "USA",
+    "datum": "2018-10-21",
+    "runda": 18
+  },
+  {
+    "nazivTrke": "Mexican Grand Prix",
+    "drzava": "Mexico",
+    "datum": "2018-10-28",
+    "runda": 19
+  },
+  {
+    "nazivTrke": "Brazilian Grand Prix",
+    "drzava": "Brazil",
+    "datum": "2018-11-11",
+    "runda": 20
+  },
+  {
+    "nazivTrke": "Abu Dhabi Grand Prix",
+    "drzava": "UAE",
+    "datum": "2018-11-25",
+    "runda": 21
+  }
+]
