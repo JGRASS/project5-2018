@@ -23,11 +23,28 @@ public class PullAPIData {
 	public static final String RACES_API_URL = "http://ergast.com/api/f1/2018.json";
 	public static void main(String[] args) {
 		try {
-			PullAPIData.serijalTrkeUJson(PullAPIData.deserijalTrkeAPI());
+
+			//PullAPIData.serijalTrkeUJson(PullAPIData.deserijalTrkeAPI());
 			LinkedList<Trka> t = new LinkedList<>();
 			t = PullAPIData.deserijalTrkeIzJson();
 			for (int i = 0; i < t.size(); i++) {
 				System.out.println(t.get(i));
+				}
+			//PullAPIData.serijalVozaceUJson(PullAPIData.deserijalVozaciAPI());
+						LinkedList<Vozac> v = new LinkedList<>();
+						v = PullAPIData.deserijalVozaceIzJson();
+						PullAPIData.dodeliVozacimaTimove();
+						PullAPIData.dodeliTimovimaVozace();
+						for (int i = 0; i < v.size(); i++) {
+						System.out.println(v.get(i));
+						}
+						
+//			PullAPIData.serijalTimoveUJson(PullAPIData.deserijalTimoviAPI());
+			LinkedList<Tim> tim = new LinkedList<>();
+			tim = PullAPIData.deserijalTimoveIzJson();
+
+			for (int i = 0; i < tim.size(); i++) {
+				System.out.println(tim.get(i));
 			}
 			
 		
@@ -135,6 +152,7 @@ public class PullAPIData {
 			}
 			return t;
 		}
+
 		
 		public static LinkedList<Trka> deserijalTrkeAPI() throws Exception{
 			LinkedList<Trka> t = new LinkedList<Trka>();
@@ -142,7 +160,7 @@ public class PullAPIData {
 			
 				JsonObject o =gson.fromJson(getContent(RACES_API_URL), JsonObject.class);
 				JsonArray a = ((JsonObject) ((JsonObject) o.get("MRData")).get("RaceTable")).get("Races").getAsJsonArray();
-				System.out.println(a.size());
+				//System.out.println(a.size());
 				for (int i = 0; i < a.size(); i++) {
 					Trka t1=new Trka();
 					JsonObject jo=(a.get(i).getAsJsonObject());
@@ -153,7 +171,7 @@ public class PullAPIData {
 					t1.setDrzava(oo.get("country").getAsString());
 					t1.setDatum(jo.get("date").getAsString());
 					t.add(t1);
-					System.out.println(t1);
+					
 				}
 				
 				
@@ -168,7 +186,7 @@ public class PullAPIData {
 				String s = gson.toJson(t.get(i));
 				JsonObject o=gson.fromJson(s, JsonObject.class);
 				a.add(o);
-				System.out.println(o);
+				
 			}
 			writer.write(gson.toJson(a));
 			writer.close();
@@ -182,9 +200,92 @@ public class PullAPIData {
 			JsonArray a = gson.fromJson(reader, JsonArray.class);
 			for (int i = 0; i < a.size(); i++) {
 				t.add(gson.fromJson(a.get(i), Trka.class));
-				System.out.println(t);
+			
 			}
 			return t;
 		}
 		
+
+		public static void dodeliVozacimaTimove() throws Exception {
+			LinkedList<Vozac> v = PullAPIData.deserijalVozaceIzJson();
+			for (int i = 0; i < v.size(); i++) {
+			switch(v.get(i).getPrezime()) {	
+				case ("Alonso"): 
+					v.get(i).setTim("McLaren");
+					break;
+				case ("Vandoorne"): 
+					v.get(i).setTim("McLaren");
+				break;
+				case ("Bottas"): 
+					v.get(i).setTim("Mercedes");
+				break;
+				case ("Ericsson"): 
+					v.get(i).setTim("Sauber");
+				break;
+				case ("Gasly"): 
+					v.get(i).setTim("Toro Rosso");
+				break;
+				case ("Grosjean"): 
+					v.get(i).setTim("Haas F1 Team");
+				break;
+				case ("Hamilton"): 
+					v.get(i).setTim("Mercedes");
+				break;
+				case ("Hartley"): 
+					v.get(i).setTim("Toro Rosso");
+				break;
+				case ("Hülkenberg"): 
+					v.get(i).setTim("Renault");
+				break;
+				case ("Leclerc"): 
+					v.get(i).setTim("Sauber");
+				break;
+				case ("Magnussen"): 
+					v.get(i).setTim("Haas F1 Team");
+				break;
+				case ("Ocon"): 
+					v.get(i).setTim("Force India");
+				break;
+				case ("Pérez"): 
+					v.get(i).setTim("Force India");
+				break;
+				case ("Räikkönen"): 
+					v.get(i).setTim("Ferrari");
+				break;
+				case ("Ricciardo"): 
+					v.get(i).setTim("Red Bull");
+				break;
+				case ("Sainz"): 
+					v.get(i).setTim("Renault");
+				break;
+				case ("Sirotkin"): 
+					v.get(i).setTim("Williams");
+				break;
+				case ("Stroll"): 
+					v.get(i).setTim("Williams");
+				break;
+				case ("Verstappen"): 
+					v.get(i).setTim("Red Bull");
+				break;
+				case ("Vettel"): 
+					v.get(i).setTim("Ferrari");
+				break;
+				default : v.get(i).setTim("Error");
+				break;
+			}
+			}
+			PullAPIData.serijalVozaceUJson(v);
+		}
+		public static void dodeliTimovimaVozace() throws Exception {
+			LinkedList<Tim> t =PullAPIData.deserijalTimoveIzJson();
+			LinkedList<Vozac> v = PullAPIData.deserijalVozaceIzJson();
+			for (int i = 0; i < v.size(); i++) {
+				for (int j = 0; j < t.size(); j++) {
+					if(v.get(i).getTim().equals(t.get(j).getNazivTima()))
+						t.get(j).setVozaci(v.get(i));
+				}
+			}
+			PullAPIData.serijalTimoveUJson(t);
+		}
+
 }

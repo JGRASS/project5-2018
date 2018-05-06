@@ -1,51 +1,871 @@
 [
   {
     "nazivTima": "Ferrari",
+    "vozaci": [
+      {
+        "ime": "Kimi",
+        "prezime": "Räikkönen",
+        "tim": "Ferrari",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Finnish"
+      },
+      {
+        "ime": "Sebastian",
+        "prezime": "Vettel",
+        "tim": "Ferrari",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "German"
+      },
+      {
+        "ime": "Kimi",
+        "prezime": "Räikkönen",
+        "tim": "Ferrari",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Finnish"
+      },
+      {
+        "ime": "Sebastian",
+        "prezime": "Vettel",
+        "tim": "Ferrari",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "German"
+      },
+      {
+        "ime": "Kimi",
+        "prezime": "Räikkönen",
+        "tim": "Ferrari",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Finnish"
+      },
+      {
+        "ime": "Sebastian",
+        "prezime": "Vettel",
+        "tim": "Ferrari",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "German"
+      },
+      {
+        "ime": "Kimi",
+        "prezime": "Räikkönen",
+        "tim": "Ferrari",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Finnish"
+      },
+      {
+        "ime": "Sebastian",
+        "prezime": "Vettel",
+        "tim": "Ferrari",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "German"
+      },
+      {
+        "ime": "Kimi",
+        "prezime": "Räikkönen",
+        "tim": "Ferrari",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Finnish"
+      },
+      {
+        "ime": "Sebastian",
+        "prezime": "Vettel",
+        "tim": "Ferrari",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "German"
+      }
+    ],
     "poeni": 0,
     "pobede": 0
   },
   {
     "nazivTima": "Force India",
+    "vozaci": [
+      {
+        "ime": "Esteban",
+        "prezime": "Ocon",
+        "tim": "Force India",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Sergio",
+        "prezime": "Pérez",
+        "tim": "Force India",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Mexican"
+      },
+      {
+        "ime": "Esteban",
+        "prezime": "Ocon",
+        "tim": "Force India",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Sergio",
+        "prezime": "Pérez",
+        "tim": "Force India",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Mexican"
+      },
+      {
+        "ime": "Esteban",
+        "prezime": "Ocon",
+        "tim": "Force India",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Sergio",
+        "prezime": "Pérez",
+        "tim": "Force India",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Mexican"
+      },
+      {
+        "ime": "Esteban",
+        "prezime": "Ocon",
+        "tim": "Force India",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Sergio",
+        "prezime": "Pérez",
+        "tim": "Force India",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Mexican"
+      },
+      {
+        "ime": "Esteban",
+        "prezime": "Ocon",
+        "tim": "Force India",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Sergio",
+        "prezime": "Pérez",
+        "tim": "Force India",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Mexican"
+      }
+    ],
     "poeni": 0,
     "pobede": 0
   },
   {
     "nazivTima": "Haas F1 Team",
+    "vozaci": [
+      {
+        "ime": "Romain",
+        "prezime": "Grosjean",
+        "tim": "Haas F1 Team",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Kevin",
+        "prezime": "Magnussen",
+        "tim": "Haas F1 Team",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Danish"
+      },
+      {
+        "ime": "Romain",
+        "prezime": "Grosjean",
+        "tim": "Haas F1 Team",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Kevin",
+        "prezime": "Magnussen",
+        "tim": "Haas F1 Team",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Danish"
+      },
+      {
+        "ime": "Romain",
+        "prezime": "Grosjean",
+        "tim": "Haas F1 Team",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Kevin",
+        "prezime": "Magnussen",
+        "tim": "Haas F1 Team",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Danish"
+      },
+      {
+        "ime": "Romain",
+        "prezime": "Grosjean",
+        "tim": "Haas F1 Team",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Kevin",
+        "prezime": "Magnussen",
+        "tim": "Haas F1 Team",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Danish"
+      },
+      {
+        "ime": "Romain",
+        "prezime": "Grosjean",
+        "tim": "Haas F1 Team",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Kevin",
+        "prezime": "Magnussen",
+        "tim": "Haas F1 Team",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Danish"
+      }
+    ],
     "poeni": 0,
     "pobede": 0
   },
   {
     "nazivTima": "McLaren",
+    "vozaci": [
+      {
+        "ime": "Fernando",
+        "prezime": "Alonso",
+        "tim": "McLaren",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Spanish"
+      },
+      {
+        "ime": "Stoffel",
+        "prezime": "Vandoorne",
+        "tim": "McLaren",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Belgian"
+      },
+      {
+        "ime": "Fernando",
+        "prezime": "Alonso",
+        "tim": "McLaren",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Spanish"
+      },
+      {
+        "ime": "Stoffel",
+        "prezime": "Vandoorne",
+        "tim": "McLaren",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Belgian"
+      },
+      {
+        "ime": "Fernando",
+        "prezime": "Alonso",
+        "tim": "McLaren",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Spanish"
+      },
+      {
+        "ime": "Stoffel",
+        "prezime": "Vandoorne",
+        "tim": "McLaren",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Belgian"
+      },
+      {
+        "ime": "Fernando",
+        "prezime": "Alonso",
+        "tim": "McLaren",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Spanish"
+      },
+      {
+        "ime": "Stoffel",
+        "prezime": "Vandoorne",
+        "tim": "McLaren",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Belgian"
+      },
+      {
+        "ime": "Fernando",
+        "prezime": "Alonso",
+        "tim": "McLaren",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Spanish"
+      },
+      {
+        "ime": "Stoffel",
+        "prezime": "Vandoorne",
+        "tim": "McLaren",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Belgian"
+      }
+    ],
     "poeni": 0,
     "pobede": 0
   },
   {
     "nazivTima": "Mercedes",
+    "vozaci": [
+      {
+        "ime": "Valtteri",
+        "prezime": "Bottas",
+        "tim": "Mercedes",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Finnish"
+      },
+      {
+        "ime": "Lewis",
+        "prezime": "Hamilton",
+        "tim": "Mercedes",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "British"
+      },
+      {
+        "ime": "Valtteri",
+        "prezime": "Bottas",
+        "tim": "Mercedes",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Finnish"
+      },
+      {
+        "ime": "Lewis",
+        "prezime": "Hamilton",
+        "tim": "Mercedes",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "British"
+      },
+      {
+        "ime": "Valtteri",
+        "prezime": "Bottas",
+        "tim": "Mercedes",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Finnish"
+      },
+      {
+        "ime": "Lewis",
+        "prezime": "Hamilton",
+        "tim": "Mercedes",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "British"
+      },
+      {
+        "ime": "Valtteri",
+        "prezime": "Bottas",
+        "tim": "Mercedes",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Finnish"
+      },
+      {
+        "ime": "Lewis",
+        "prezime": "Hamilton",
+        "tim": "Mercedes",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "British"
+      },
+      {
+        "ime": "Valtteri",
+        "prezime": "Bottas",
+        "tim": "Mercedes",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Finnish"
+      },
+      {
+        "ime": "Lewis",
+        "prezime": "Hamilton",
+        "tim": "Mercedes",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "British"
+      }
+    ],
     "poeni": 0,
     "pobede": 0
   },
   {
     "nazivTima": "Red Bull",
+    "vozaci": [
+      {
+        "ime": "Daniel",
+        "prezime": "Ricciardo",
+        "tim": "Red Bull",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Australian"
+      },
+      {
+        "ime": "Max",
+        "prezime": "Verstappen",
+        "tim": "Red Bull",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Dutch"
+      },
+      {
+        "ime": "Daniel",
+        "prezime": "Ricciardo",
+        "tim": "Red Bull",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Australian"
+      },
+      {
+        "ime": "Max",
+        "prezime": "Verstappen",
+        "tim": "Red Bull",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Dutch"
+      },
+      {
+        "ime": "Daniel",
+        "prezime": "Ricciardo",
+        "tim": "Red Bull",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Australian"
+      },
+      {
+        "ime": "Max",
+        "prezime": "Verstappen",
+        "tim": "Red Bull",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Dutch"
+      },
+      {
+        "ime": "Daniel",
+        "prezime": "Ricciardo",
+        "tim": "Red Bull",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Australian"
+      },
+      {
+        "ime": "Max",
+        "prezime": "Verstappen",
+        "tim": "Red Bull",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Dutch"
+      },
+      {
+        "ime": "Daniel",
+        "prezime": "Ricciardo",
+        "tim": "Red Bull",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Australian"
+      },
+      {
+        "ime": "Max",
+        "prezime": "Verstappen",
+        "tim": "Red Bull",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Dutch"
+      }
+    ],
     "poeni": 0,
     "pobede": 0
   },
   {
     "nazivTima": "Renault",
+    "vozaci": [
+      {
+        "ime": "Nico",
+        "prezime": "Hülkenberg",
+        "tim": "Renault",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "German"
+      },
+      {
+        "ime": "Carlos",
+        "prezime": "Sainz",
+        "tim": "Renault",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Spanish"
+      },
+      {
+        "ime": "Nico",
+        "prezime": "Hülkenberg",
+        "tim": "Renault",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "German"
+      },
+      {
+        "ime": "Carlos",
+        "prezime": "Sainz",
+        "tim": "Renault",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Spanish"
+      },
+      {
+        "ime": "Nico",
+        "prezime": "Hülkenberg",
+        "tim": "Renault",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "German"
+      },
+      {
+        "ime": "Carlos",
+        "prezime": "Sainz",
+        "tim": "Renault",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Spanish"
+      },
+      {
+        "ime": "Nico",
+        "prezime": "Hülkenberg",
+        "tim": "Renault",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "German"
+      },
+      {
+        "ime": "Carlos",
+        "prezime": "Sainz",
+        "tim": "Renault",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Spanish"
+      },
+      {
+        "ime": "Nico",
+        "prezime": "Hülkenberg",
+        "tim": "Renault",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "German"
+      },
+      {
+        "ime": "Carlos",
+        "prezime": "Sainz",
+        "tim": "Renault",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Spanish"
+      }
+    ],
     "poeni": 0,
     "pobede": 0
   },
   {
     "nazivTima": "Sauber",
+    "vozaci": [
+      {
+        "ime": "Marcus",
+        "prezime": "Ericsson",
+        "tim": "Sauber",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Swedish"
+      },
+      {
+        "ime": "Charles",
+        "prezime": "Leclerc",
+        "tim": "Sauber",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Monegasque"
+      },
+      {
+        "ime": "Marcus",
+        "prezime": "Ericsson",
+        "tim": "Sauber",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Swedish"
+      },
+      {
+        "ime": "Charles",
+        "prezime": "Leclerc",
+        "tim": "Sauber",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Monegasque"
+      },
+      {
+        "ime": "Marcus",
+        "prezime": "Ericsson",
+        "tim": "Sauber",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Swedish"
+      },
+      {
+        "ime": "Charles",
+        "prezime": "Leclerc",
+        "tim": "Sauber",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Monegasque"
+      },
+      {
+        "ime": "Marcus",
+        "prezime": "Ericsson",
+        "tim": "Sauber",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Swedish"
+      },
+      {
+        "ime": "Charles",
+        "prezime": "Leclerc",
+        "tim": "Sauber",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Monegasque"
+      },
+      {
+        "ime": "Marcus",
+        "prezime": "Ericsson",
+        "tim": "Sauber",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Swedish"
+      },
+      {
+        "ime": "Charles",
+        "prezime": "Leclerc",
+        "tim": "Sauber",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Monegasque"
+      }
+    ],
     "poeni": 0,
     "pobede": 0
   },
   {
     "nazivTima": "Toro Rosso",
+    "vozaci": [
+      {
+        "ime": "Pierre",
+        "prezime": "Gasly",
+        "tim": "Toro Rosso",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Brendon",
+        "prezime": "Hartley",
+        "tim": "Toro Rosso",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "New Zealander"
+      },
+      {
+        "ime": "Pierre",
+        "prezime": "Gasly",
+        "tim": "Toro Rosso",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Brendon",
+        "prezime": "Hartley",
+        "tim": "Toro Rosso",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "New Zealander"
+      },
+      {
+        "ime": "Pierre",
+        "prezime": "Gasly",
+        "tim": "Toro Rosso",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Brendon",
+        "prezime": "Hartley",
+        "tim": "Toro Rosso",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "New Zealander"
+      },
+      {
+        "ime": "Pierre",
+        "prezime": "Gasly",
+        "tim": "Toro Rosso",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Brendon",
+        "prezime": "Hartley",
+        "tim": "Toro Rosso",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "New Zealander"
+      },
+      {
+        "ime": "Pierre",
+        "prezime": "Gasly",
+        "tim": "Toro Rosso",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "French"
+      },
+      {
+        "ime": "Brendon",
+        "prezime": "Hartley",
+        "tim": "Toro Rosso",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "New Zealander"
+      }
+    ],
     "poeni": 0,
     "pobede": 0
   },
   {
     "nazivTima": "Williams",
+    "vozaci": [
+      {
+        "ime": "Sergey",
+        "prezime": "Sirotkin",
+        "tim": "Williams",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Russian"
+      },
+      {
+        "ime": "Lance",
+        "prezime": "Stroll",
+        "tim": "Williams",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Canadian"
+      },
+      {
+        "ime": "Sergey",
+        "prezime": "Sirotkin",
+        "tim": "Williams",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Russian"
+      },
+      {
+        "ime": "Lance",
+        "prezime": "Stroll",
+        "tim": "Williams",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Canadian"
+      },
+      {
+        "ime": "Sergey",
+        "prezime": "Sirotkin",
+        "tim": "Williams",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Russian"
+      },
+      {
+        "ime": "Lance",
+        "prezime": "Stroll",
+        "tim": "Williams",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Canadian"
+      },
+      {
+        "ime": "Sergey",
+        "prezime": "Sirotkin",
+        "tim": "Williams",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Russian"
+      },
+      {
+        "ime": "Lance",
+        "prezime": "Stroll",
+        "tim": "Williams",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Canadian"
+      },
+      {
+        "ime": "Sergey",
+        "prezime": "Sirotkin",
+        "tim": "Williams",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Russian"
+      },
+      {
+        "ime": "Lance",
+        "prezime": "Stroll",
+        "tim": "Williams",
+        "poeni": 0,
+        "pobede": 0,
+        "drzava": "Canadian"
+      }
+    ],
     "poeni": 0,
     "pobede": 0
   }

@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 public class Tim {
 	@SerializedName(value="nazivTima", alternate="name")
 	private String nazivTima;
-	private LinkedList<Vozac> vozaci;
+	private LinkedList<Vozac> vozaci = new LinkedList<Vozac>();
 	private int poeni;
 	private int pobede;
 	public String getNazivTima() {
@@ -19,8 +19,8 @@ public class Tim {
 	public LinkedList<Vozac> getVozaci() {
 		return vozaci;
 	}
-	public void setVozaci(LinkedList<Vozac> vozaci) {
-		this.vozaci = vozaci;
+	public void setVozaci(Vozac vozac) {
+		this.vozaci.add(vozac);
 	}
 	public int getPoeni() {
 		return poeni;
