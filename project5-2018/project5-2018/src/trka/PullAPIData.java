@@ -21,7 +21,16 @@ public class PullAPIData {
 	public static final String CONSTRUCTORS_API_URL  = "http://ergast.com/api/f1/2018/constructors.json";
 	public static void main(String[] args) {
 		try {
-			PullAPIData.serijalTimoveUJson(PullAPIData.deserijalTimoviAPI());
+			//PullAPIData.serijalVozaceUJson(PullAPIData.deserijalVozaciAPI());
+						LinkedList<Vozac> v = new LinkedList<>();
+						v = PullAPIData.deserijalVozaceIzJson();
+						PullAPIData.dodeliVozacimaTimove();
+						PullAPIData.dodeliTimovimaVozace();
+						for (int i = 0; i < v.size(); i++) {
+						System.out.println(v.get(i));
+						}
+						
+//			PullAPIData.serijalTimoveUJson(PullAPIData.deserijalTimoviAPI());
 			LinkedList<Tim> t = new LinkedList<>();
 			t = PullAPIData.deserijalTimoveIzJson();
 			for (int i = 0; i < t.size(); i++) {
@@ -131,5 +140,85 @@ public class PullAPIData {
 			}
 			return t;
 		}
-		
+		public static void dodeliVozacimaTimove() throws Exception {
+			LinkedList<Vozac> v = PullAPIData.deserijalVozaceIzJson();
+			for (int i = 0; i < v.size(); i++) {
+			switch(v.get(i).getPrezime()) {	
+				case ("Alonso"): 
+					v.get(i).setTim("McLaren");
+					break;
+				case ("Vandoorne"): 
+					v.get(i).setTim("McLaren");
+				break;
+				case ("Bottas"): 
+					v.get(i).setTim("Mercedes");
+				break;
+				case ("Ericsson"): 
+					v.get(i).setTim("Sauber");
+				break;
+				case ("Gasly"): 
+					v.get(i).setTim("Toro Rosso");
+				break;
+				case ("Grosjean"): 
+					v.get(i).setTim("Haas F1 Team");
+				break;
+				case ("Hamilton"): 
+					v.get(i).setTim("Mercedes");
+				break;
+				case ("Hartley"): 
+					v.get(i).setTim("Toro Rosso");
+				break;
+				case ("Hülkenberg"): 
+					v.get(i).setTim("Renault");
+				break;
+				case ("Leclerc"): 
+					v.get(i).setTim("Sauber");
+				break;
+				case ("Magnussen"): 
+					v.get(i).setTim("Haas F1 Team");
+				break;
+				case ("Ocon"): 
+					v.get(i).setTim("Force India");
+				break;
+				case ("Pérez"): 
+					v.get(i).setTim("Force India");
+				break;
+				case ("Räikkönen"): 
+					v.get(i).setTim("Ferrari");
+				break;
+				case ("Ricciardo"): 
+					v.get(i).setTim("Red Bull");
+				break;
+				case ("Sainz"): 
+					v.get(i).setTim("Renault");
+				break;
+				case ("Sirotkin"): 
+					v.get(i).setTim("Williams");
+				break;
+				case ("Stroll"): 
+					v.get(i).setTim("Williams");
+				break;
+				case ("Verstappen"): 
+					v.get(i).setTim("Red Bull");
+				break;
+				case ("Vettel"): 
+					v.get(i).setTim("Ferrari");
+				break;
+				default : v.get(i).setTim("Error");
+				break;
+			}
+			}
+			PullAPIData.serijalVozaceUJson(v);
+		}
+		public static void dodeliTimovimaVozace() throws Exception {
+			LinkedList<Tim> t =PullAPIData.deserijalTimoveIzJson();
+			LinkedList<Vozac> v = PullAPIData.deserijalVozaceIzJson();
+			for (int i = 0; i < v.size(); i++) {
+				for (int j = 0; j < t.size(); j++) {
+					if(v.get(i).getTim().equals(t.get(j).getNazivTima()))
+						t.get(j).setVozaci(v.get(i));
+				}
+			}
+			PullAPIData.serijalTimoveUJson(t);
+		}
 }

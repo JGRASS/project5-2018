@@ -2,6 +2,7 @@
   {
     "ime": "Fernando",
     "prezime": "Alonso",
+    "tim": "McLaren",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Spanish"
@@ -9,6 +10,7 @@
   {
     "ime": "Valtteri",
     "prezime": "Bottas",
+    "tim": "Mercedes",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Finnish"
@@ -16,6 +18,7 @@
   {
     "ime": "Marcus",
     "prezime": "Ericsson",
+    "tim": "Sauber",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Swedish"
@@ -23,6 +26,7 @@
   {
     "ime": "Pierre",
     "prezime": "Gasly",
+    "tim": "Toro Rosso",
     "poeni": 0,
     "pobede": 0,
     "drzava": "French"
@@ -30,6 +34,7 @@
   {
     "ime": "Romain",
     "prezime": "Grosjean",
+    "tim": "Haas F1 Team",
     "poeni": 0,
     "pobede": 0,
     "drzava": "French"
@@ -37,6 +42,7 @@
   {
     "ime": "Lewis",
     "prezime": "Hamilton",
+    "tim": "Mercedes",
     "poeni": 0,
     "pobede": 0,
     "drzava": "British"
@@ -44,6 +50,7 @@
   {
     "ime": "Brendon",
     "prezime": "Hartley",
+    "tim": "Toro Rosso",
     "poeni": 0,
     "pobede": 0,
     "drzava": "New Zealander"
@@ -51,6 +58,7 @@
   {
     "ime": "Nico",
     "prezime": "Hülkenberg",
+    "tim": "Renault",
     "poeni": 0,
     "pobede": 0,
     "drzava": "German"
@@ -58,6 +66,7 @@
   {
     "ime": "Charles",
     "prezime": "Leclerc",
+    "tim": "Sauber",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Monegasque"
@@ -65,6 +74,7 @@
   {
     "ime": "Kevin",
     "prezime": "Magnussen",
+    "tim": "Haas F1 Team",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Danish"
@@ -72,6 +82,7 @@
   {
     "ime": "Esteban",
     "prezime": "Ocon",
+    "tim": "Force India",
     "poeni": 0,
     "pobede": 0,
     "drzava": "French"
@@ -79,6 +90,7 @@
   {
     "ime": "Sergio",
     "prezime": "Pérez",
+    "tim": "Force India",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Mexican"
@@ -86,6 +98,7 @@
   {
     "ime": "Kimi",
     "prezime": "Räikkönen",
+    "tim": "Ferrari",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Finnish"
@@ -93,6 +106,7 @@
   {
     "ime": "Daniel",
     "prezime": "Ricciardo",
+    "tim": "Red Bull",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Australian"
@@ -100,6 +114,7 @@
   {
     "ime": "Carlos",
     "prezime": "Sainz",
+    "tim": "Renault",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Spanish"
@@ -107,6 +122,7 @@
   {
     "ime": "Sergey",
     "prezime": "Sirotkin",
+    "tim": "Williams",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Russian"
@@ -114,6 +130,7 @@
   {
     "ime": "Lance",
     "prezime": "Stroll",
+    "tim": "Williams",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Canadian"
@@ -121,6 +138,7 @@
   {
     "ime": "Stoffel",
     "prezime": "Vandoorne",
+    "tim": "McLaren",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Belgian"
@@ -128,6 +146,7 @@
   {
     "ime": "Max",
     "prezime": "Verstappen",
+    "tim": "Red Bull",
     "poeni": 0,
     "pobede": 0,
     "drzava": "Dutch"
@@ -135,6 +154,7 @@
   {
     "ime": "Sebastian",
     "prezime": "Vettel",
+    "tim": "Ferrari",
     "poeni": 0,
     "pobede": 0,
     "drzava": "German"
