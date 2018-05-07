@@ -24,8 +24,6 @@ public class PullAPIData {
 	public static final String DRIVERS_API_URL = "http://ergast.com/api/f1/2018/drivers.json";
 	public static final String CONSTRUCTORS_API_URL = "http://ergast.com/api/f1/2018/constructors.json";
 	public static final String RACES_API_URL = "http://ergast.com/api/f1/2018.json";
-	public static int brRunde = 1;
-	public static final String RESULTS_API_URL = "https://ergast.com/api/f1/2018/" + brRunde + "/results.json";
 
 	public static void main(String[] args) {
 		try {
@@ -307,10 +305,11 @@ public class PullAPIData {
 		PullAPIData.serijalTimoveUJson(t);
 	}
 
-	public static LinkedList<Rezultat> deserijalRezultateAPI(int brR) throws JsonSyntaxException, IOException {
+	public static LinkedList<Rezultat> deserijalRezultateAPI(int brRunde) throws JsonSyntaxException, IOException {
+		String RESULTS_API_URL = "https://ergast.com/api/f1/2018/" + brRunde + "/results.json";
+		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		LinkedList<Rezultat> r = new LinkedList<>();
-		brRunde = brR;
 		JsonObject o = gson.fromJson(getContent(RESULTS_API_URL), JsonObject.class);
 		JsonArray a = ((JsonObject) ((JsonObject) o.get("MRData")).get("RaceTable")).get("Races").getAsJsonArray();
 		// System.out.println(a.size());
@@ -323,7 +322,7 @@ public class PullAPIData {
 			r1.setVozac(gson.fromJson(driver, Vozac.class));
 			r1.setMesto(obj.get("position").getAsInt());
 			String status = obj.get("status").getAsString();
-			// vreme ostaje null onima koji nisu zavrsili trku
+			// vreme trke "DNF" onima koji nisu zavrsili trku
 			if (status.equals("Finished")) {
 
 				JsonObject objTime = ((JsonObject) (ja.get(i))).get("Time").getAsJsonObject();

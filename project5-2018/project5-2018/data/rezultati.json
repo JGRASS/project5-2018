@@ -1,25 +1,14 @@
 [
   {
     "vozac": {
-      "ime": "Sebastian",
-      "prezime": "Vettel",
-      "poeni": 0,
-      "pobede": 0,
-      "drzava": "German"
-    },
-    "vreme": "1:29:33.283",
-    "mesto": 1
-  },
-  {
-    "vozac": {
       "ime": "Lewis",
       "prezime": "Hamilton",
       "poeni": 0,
       "pobede": 0,
       "drzava": "British"
     },
-    "vreme": "+5.036",
-    "mesto": 2
+    "vreme": "1:43:44.291",
+    "mesto": 1
   },
   {
     "vozac": {
@@ -29,19 +18,52 @@
       "pobede": 0,
       "drzava": "Finnish"
     },
-    "vreme": "+6.309",
+    "vreme": "+2.460",
+    "mesto": 2
+  },
+  {
+    "vozac": {
+      "ime": "Sergio",
+      "prezime": "Pérez",
+      "poeni": 0,
+      "pobede": 0,
+      "drzava": "Mexican"
+    },
+    "vreme": "+4.024",
     "mesto": 3
   },
   {
     "vozac": {
-      "ime": "Daniel",
-      "prezime": "Ricciardo",
+      "ime": "Sebastian",
+      "prezime": "Vettel",
       "poeni": 0,
       "pobede": 0,
-      "drzava": "Australian"
+      "drzava": "German"
     },
-    "vreme": "+7.069",
+    "vreme": "+5.329",
     "mesto": 4
+  },
+  {
+    "vozac": {
+      "ime": "Carlos",
+      "prezime": "Sainz",
+      "poeni": 0,
+      "pobede": 0,
+      "drzava": "Spanish"
+    },
+    "vreme": "+7.515",
+    "mesto": 5
+  },
+  {
+    "vozac": {
+      "ime": "Charles",
+      "prezime": "Leclerc",
+      "poeni": 0,
+      "pobede": 0,
+      "drzava": "Monegasque"
+    },
+    "vreme": "+9.158",
+    "mesto": 6
   },
   {
     "vozac": {
@@ -51,40 +73,18 @@
       "pobede": 0,
       "drzava": "Spanish"
     },
-    "vreme": "+27.886",
-    "mesto": 5
-  },
-  {
-    "vozac": {
-      "ime": "Max",
-      "prezime": "Verstappen",
-      "poeni": 0,
-      "pobede": 0,
-      "drzava": "Dutch"
-    },
-    "vreme": "+28.945",
-    "mesto": 6
-  },
-  {
-    "vozac": {
-      "ime": "Nico",
-      "prezime": "Hülkenberg",
-      "poeni": 0,
-      "pobede": 0,
-      "drzava": "German"
-    },
-    "vreme": "+32.671",
+    "vreme": "+10.931",
     "mesto": 7
   },
   {
     "vozac": {
-      "ime": "Valtteri",
-      "prezime": "Bottas",
+      "ime": "Lance",
+      "prezime": "Stroll",
       "poeni": 0,
       "pobede": 0,
-      "drzava": "Finnish"
+      "drzava": "Canadian"
     },
-    "vreme": "+34.339",
+    "vreme": "+12.546",
     "mesto": 8
   },
   {
@@ -95,63 +95,8 @@
       "pobede": 0,
       "drzava": "Belgian"
     },
-    "vreme": "+34.921",
+    "vreme": "+14.152",
     "mesto": 9
-  },
-  {
-    "vozac": {
-      "ime": "Carlos",
-      "prezime": "Sainz",
-      "poeni": 0,
-      "pobede": 0,
-      "drzava": "Spanish"
-    },
-    "vreme": "+45.722",
-    "mesto": 10
-  },
-  {
-    "vozac": {
-      "ime": "Sergio",
-      "prezime": "Pérez",
-      "poeni": 0,
-      "pobede": 0,
-      "drzava": "Mexican"
-    },
-    "vreme": "+46.817",
-    "mesto": 11
-  },
-  {
-    "vozac": {
-      "ime": "Esteban",
-      "prezime": "Ocon",
-      "poeni": 0,
-      "pobede": 0,
-      "drzava": "French"
-    },
-    "vreme": "+1:00.278",
-    "mesto": 12
-  },
-  {
-    "vozac": {
-      "ime": "Charles",
-      "prezime": "Leclerc",
-      "poeni": 0,
-      "pobede": 0,
-      "drzava": "Monegasque"
-    },
-    "vreme": "+1:15.759",
-    "mesto": 13
-  },
-  {
-    "vozac": {
-      "ime": "Lance",
-      "prezime": "Stroll",
-      "poeni": 0,
-      "pobede": 0,
-      "drzava": "Canadian"
-    },
-    "vreme": "+1:18.288",
-    "mesto": 14
   },
   {
     "vozac": {
@@ -161,8 +106,52 @@
       "pobede": 0,
       "drzava": "New Zealander"
     },
+    "vreme": "+18.030",
+    "mesto": 10
+  },
+  {
+    "vozac": {
+      "ime": "Marcus",
+      "prezime": "Ericsson",
+      "poeni": 0,
+      "pobede": 0,
+      "drzava": "Swedish"
+    },
+    "vreme": "+18.512",
+    "mesto": 11
+  },
+  {
+    "vozac": {
+      "ime": "Pierre",
+      "prezime": "Gasly",
+      "poeni": 0,
+      "pobede": 0,
+      "drzava": "French"
+    },
+    "vreme": "+24.720",
+    "mesto": 12
+  },
+  {
+    "vozac": {
+      "ime": "Kevin",
+      "prezime": "Magnussen",
+      "poeni": 0,
+      "pobede": 0,
+      "drzava": "Danish"
+    },
+    "vreme": "+40.663",
+    "mesto": 13
+  },
+  {
+    "vozac": {
+      "ime": "Valtteri",
+      "prezime": "Bottas",
+      "poeni": 0,
+      "pobede": 0,
+      "drzava": "Finnish"
+    },
     "vreme": "DNF",
-    "mesto": 15
+    "mesto": 14
   },
   {
     "vozac": {
@@ -173,37 +162,48 @@
       "drzava": "French"
     },
     "vreme": "DNF",
+    "mesto": 15
+  },
+  {
+    "vozac": {
+      "ime": "Max",
+      "prezime": "Verstappen",
+      "poeni": 0,
+      "pobede": 0,
+      "drzava": "Dutch"
+    },
+    "vreme": "DNF",
     "mesto": 16
   },
   {
     "vozac": {
-      "ime": "Kevin",
-      "prezime": "Magnussen",
+      "ime": "Daniel",
+      "prezime": "Ricciardo",
       "poeni": 0,
       "pobede": 0,
-      "drzava": "Danish"
+      "drzava": "Australian"
     },
     "vreme": "DNF",
     "mesto": 17
   },
   {
     "vozac": {
-      "ime": "Pierre",
-      "prezime": "Gasly",
+      "ime": "Nico",
+      "prezime": "Hülkenberg",
       "poeni": 0,
       "pobede": 0,
-      "drzava": "French"
+      "drzava": "German"
     },
     "vreme": "DNF",
     "mesto": 18
   },
   {
     "vozac": {
-      "ime": "Marcus",
-      "prezime": "Ericsson",
+      "ime": "Esteban",
+      "prezime": "Ocon",
       "poeni": 0,
       "pobede": 0,
-      "drzava": "Swedish"
+      "drzava": "French"
     },
     "vreme": "DNF",
     "mesto": 19
