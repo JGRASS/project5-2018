@@ -1,11 +1,13 @@
 package trka;
 
+import java.util.LinkedList;
+
 public class Trka {
 	private String nazivTrke;
 	private String drzava;
 	private String datum;
 	private int runda;
-	private Rezultat rezultat;
+	private LinkedList<Rezultat> rezultati;
 	public String getNazivTrke() {
 		return nazivTrke;
 	}
@@ -24,13 +26,12 @@ public class Trka {
 	public void setDatum(String datum) {
 		this.datum = datum;
 	}
-	public Rezultat getRezultat() {
-		return rezultat;
+	public LinkedList<Rezultat> getRezultat() {
+		return rezultati;
 	}
-	public void setRezultat(Rezultat rezultat) {
-		this.rezultat = rezultat;
+	public void setRezultat(LinkedList<Rezultat> rezultat) {
+		this.rezultati = rezultati;
 	}
-	
 	public int getRunda() {
 		return runda;
 	}
@@ -40,8 +41,9 @@ public class Trka {
 	@Override
 	public String toString() {
 		return "Trka [nazivTrke=" + nazivTrke + ", drzava=" + drzava + ", datum=" + datum + ", runda=" + runda
-				+ ", rezultat=" + rezultat + "]";
+				+ ", rezultati=" + rezultati + "]";
 	}
+	
 	
 	
 	

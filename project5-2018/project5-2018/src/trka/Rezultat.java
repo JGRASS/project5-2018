@@ -1,10 +1,9 @@
 package trka;
 
-import java.sql.Date;
 
 public class Rezultat {
 	private Vozac vozac;
-	private Date vreme;
+	private String vreme;
 	private int mesto;
 	public Vozac getVozac() {
 		return vozac;
@@ -12,10 +11,11 @@ public class Rezultat {
 	public void setVozac(Vozac vozac) {
 		this.vozac = vozac;
 	}
-	public Date getVreme() {
+	
+	public String getVreme() {
 		return vreme;
 	}
-	public void setVreme(Date vreme) {
+	public void setVreme(String vreme) {
 		this.vreme = vreme;
 	}
 	public int getMesto() {

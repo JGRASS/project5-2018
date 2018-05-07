@@ -8,12 +8,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 
 
 
@@ -21,9 +26,19 @@ public class PullAPIData {
 	public static final String DRIVERS_API_URL  = "http://ergast.com/api/f1/2018/drivers.json";
 	public static final String CONSTRUCTORS_API_URL  = "http://ergast.com/api/f1/2018/constructors.json";
 	public static final String RACES_API_URL = "http://ergast.com/api/f1/2018.json";
+	public static int brRunde=1;
+	public static final String RESULTS_API_URL = "https://ergast.com/api/f1/2018/"+brRunde+"/results.json";
+	
 	public static void main(String[] args) {
 		try {
-
+			
+			//PullAPIData.serijalizacijaRezultataUJson(PullAPIData.deserijalRezultateAPI(4));
+			LinkedList<Rezultat> r=new LinkedList<>();
+			r=PullAPIData.deserijalizacijaRezultataIzJson();
+			for (int i = 0; i < r.size(); i++) {
+				System.out.println(r.get(i));
+			}
+		
 			//PullAPIData.serijalTrkeUJson(PullAPIData.deserijalTrkeAPI());
 			LinkedList<Trka> t = new LinkedList<>();
 			t = PullAPIData.deserijalTrkeIzJson();
@@ -46,6 +61,7 @@ public class PullAPIData {
 			for (int i = 0; i < tim.size(); i++) {
 				System.out.println(tim.get(i));
 			}
+			
 			
 		
 		} catch (Exception e) {
@@ -287,5 +303,60 @@ public class PullAPIData {
 			}
 			PullAPIData.serijalTimoveUJson(t);
 		}
+		
+		public static LinkedList<Rezultat> deserijalRezultateAPI(int brR) throws JsonSyntaxException, IOException {
+			Gson gson=new GsonBuilder().setPrettyPrinting().create();
+			LinkedList<Rezultat> r=new LinkedList<>();
+			brRunde=brR;
+			JsonObject o =gson.fromJson(getContent(RESULTS_API_URL), JsonObject.class);
+			JsonArray a=((JsonObject)((JsonObject) o.get("MRData")).get("RaceTable")).get("Races").getAsJsonArray();
+			//System.out.println(a.size());
+			JsonArray ja=a.get(0).getAsJsonObject().get("Results").getAsJsonArray();
 
+			for (int i = 0; i < ja.size(); i++) {
+				Rezultat r1=new Rezultat();
+				JsonObject obj=((JsonObject) ja.get(i)).getAsJsonObject();
+				JsonObject driver=obj.get("Driver").getAsJsonObject();
+				r1.setVozac(gson.fromJson(driver, Vozac.class));
+				r1.setMesto(obj.get("position").getAsInt());
+				String status=obj.get("status").getAsString();
+				//vreme ostaje null onima koji nisu zavrsili trku
+				if(status.equals("Finished")) {
+				
+				JsonObject objTime=((JsonObject)(ja.get(i))).get("Time").getAsJsonObject();
+				r1.setVreme(objTime.get("time").getAsString());
+				
+				}
+				r.add(r1);
+			}
+			return r;
+		}
+		
+		public static void serijalizacijaRezultataUJson(LinkedList<Rezultat> r) throws IOException {
+			FileWriter writer=new FileWriter("data/rezultati.json");
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			JsonArray a = new JsonArray();
+			for (int i = 0; i < r.size(); i++) {
+				String s = gson.toJson(r.get(i));
+				JsonObject o=gson.fromJson(s, JsonObject.class);
+				a.add(o);
+				
+			}
+			writer.write(gson.toJson(a));
+			writer.close();
+			
+		}
+		
+		public static LinkedList<Rezultat> deserijalizacijaRezultataIzJson() throws Exception{
+			FileReader reader = new FileReader("data/rezultati.json");
+			LinkedList<Rezultat> r = new LinkedList<>();
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			JsonArray a = gson.fromJson(reader, JsonArray.class);
+			for (int i = 0; i < a.size(); i++) {
+				r.add(gson.fromJson(a.get(i), Rezultat.class));
+			
+			}
+			return r;
+		}
+		
 }
