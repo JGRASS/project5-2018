@@ -161,6 +161,7 @@
       "pobede": 0,
       "drzava": "New Zealander"
     },
+    "vreme": "DNF",
     "mesto": 15
   },
   {
@@ -171,6 +172,7 @@
       "pobede": 0,
       "drzava": "French"
     },
+    "vreme": "DNF",
     "mesto": 16
   },
   {
@@ -181,6 +183,7 @@
       "pobede": 0,
       "drzava": "Danish"
     },
+    "vreme": "DNF",
     "mesto": 17
   },
   {
@@ -191,6 +194,7 @@
       "pobede": 0,
       "drzava": "French"
     },
+    "vreme": "DNF",
     "mesto": 18
   },
   {
@@ -201,6 +205,7 @@
       "pobede": 0,
       "drzava": "Swedish"
     },
+    "vreme": "DNF",
     "mesto": 19
   },
   {
@@ -211,6 +216,7 @@
       "pobede": 0,
       "drzava": "Russian"
     },
+    "vreme": "DNF",
     "mesto": 20
   }
 ]
