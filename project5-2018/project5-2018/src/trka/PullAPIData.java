@@ -28,8 +28,7 @@ public class PullAPIData {
 
 	public static void main(String[] args) {
 		try {
-			PullAPIData.dodeliVozacimaTimove();
-			PullAPIData.dodeliTimovimaVozace();
+			
 			//PullAPIData.deserijalRezultateAPI();
 			LinkedList<Rezultat> r = new LinkedList<>();
 			r = PullAPIData.deserijalizacijaRezultataIzJson("Chinese Grand Prix");
@@ -51,13 +50,15 @@ public class PullAPIData {
 				System.out.println(v.get(i));
 			}
 
-			// PullAPIData.serijalTimoveUJson(PullAPIData.deserijalTimoviAPI());
+			//PullAPIData.serijalTimoveUJson(PullAPIData.deserijalTimoviAPI());
 			LinkedList<Tim> tim = new LinkedList<>();
 			tim = PullAPIData.deserijalTimoveIzJson();
 
 			for (int i = 0; i < tim.size(); i++) {
 				System.out.println(tim.get(i));
 			}
+//			PullAPIData.dodeliVozacimaTimove();
+//			PullAPIData.dodeliTimovimaVozace();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
