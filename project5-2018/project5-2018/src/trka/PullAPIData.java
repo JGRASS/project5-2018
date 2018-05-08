@@ -1,6 +1,7 @@
 package trka;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,10 +28,11 @@ public class PullAPIData {
 
 	public static void main(String[] args) {
 		try {
-
-			PullAPIData.serijalizacijaRezultataUJson(PullAPIData.deserijalRezultateAPI(4));
+			PullAPIData.dodeliVozacimaTimove();
+			PullAPIData.dodeliTimovimaVozace();
+			//PullAPIData.deserijalRezultateAPI();
 			LinkedList<Rezultat> r = new LinkedList<>();
-			r = PullAPIData.deserijalizacijaRezultataIzJson();
+			r = PullAPIData.deserijalizacijaRezultataIzJson("Chinese Grand Prix");
 			for (int i = 0; i < r.size(); i++) {
 				System.out.println(r.get(i));
 			}
@@ -44,8 +46,7 @@ public class PullAPIData {
 			// PullAPIData.serijalVozaceUJson(PullAPIData.deserijalVozaciAPI());
 			LinkedList<Vozac> v = new LinkedList<>();
 			v = PullAPIData.deserijalVozaceIzJson();
-			PullAPIData.dodeliVozacimaTimove();
-			PullAPIData.dodeliTimovimaVozace();
+			
 			for (int i = 0; i < v.size(); i++) {
 				System.out.println(v.get(i));
 			}
@@ -305,37 +306,61 @@ public class PullAPIData {
 		PullAPIData.serijalTimoveUJson(t);
 	}
 
-	public static LinkedList<Rezultat> deserijalRezultateAPI(int brRunde) throws JsonSyntaxException, IOException {
-		String RESULTS_API_URL = "https://ergast.com/api/f1/2018/" + brRunde + "/results.json";
+	public static void deserijalRezultateAPI() throws Exception {
 		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		LinkedList<Rezultat> r = new LinkedList<>();
-		JsonObject o = gson.fromJson(getContent(RESULTS_API_URL), JsonObject.class);
-		JsonArray a = ((JsonObject) ((JsonObject) o.get("MRData")).get("RaceTable")).get("Races").getAsJsonArray();
-		// System.out.println(a.size());
-		JsonArray ja = a.get(0).getAsJsonObject().get("Results").getAsJsonArray();
+		/////////////////////////////////////////////////////////////////////////////////////////
+		LinkedList<Trka> t = deserijalTrkeAPI();
+		int k = daLiJeSerijalizovana();
+		System.out.println(t.size());
+		for (int i = 0; i < t.size() ; i++) {
+			//Provera da li je trka vec unesena
+			if(k>i)
+				continue;
+			String RESULTS_API_URL = "https://ergast.com/api/f1/2018/" + (int)(i+1) + "/results.json";
+			
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			LinkedList<Rezultat> r = new LinkedList<>();
+			JsonObject o = gson.fromJson(getContent(RESULTS_API_URL), JsonObject.class);
+			JsonObject jo = new JsonObject();
+			jo = o;
+			int p = ((JsonObject) jo.get("MRData")).get("total").getAsInt();
+			//Provera da li trka ima rezultate
+			if(p == 0)
+				continue;
+			JsonArray a = ((JsonObject) ((JsonObject) o.get("MRData")).get("RaceTable")).get("Races").getAsJsonArray();
+			// System.out.println(a.size());
+			JsonArray ja = a.get(0).getAsJsonObject().get("Results").getAsJsonArray();
+			for (int i1 = 0; i1 < ja.size(); i1++) {
+				Rezultat r1 = new Rezultat();
+				JsonObject obj = ((JsonObject) ja.get(i1)).getAsJsonObject();
+				JsonObject driver = obj.get("Driver").getAsJsonObject();
+				r1.setVozac(gson.fromJson(driver, Vozac.class));
+				r1.setMesto(obj.get("position").getAsInt());
+				String status = obj.get("status").getAsString();
+				// vreme trke "DNF" onima koji nisu zavrsili trku
+				if (status.equals("Finished")) {
 
-		for (int i = 0; i < ja.size(); i++) {
-			Rezultat r1 = new Rezultat();
-			JsonObject obj = ((JsonObject) ja.get(i)).getAsJsonObject();
-			JsonObject driver = obj.get("Driver").getAsJsonObject();
-			r1.setVozac(gson.fromJson(driver, Vozac.class));
-			r1.setMesto(obj.get("position").getAsInt());
-			String status = obj.get("status").getAsString();
-			// vreme trke "DNF" onima koji nisu zavrsili trku
-			if (status.equals("Finished")) {
-
-				JsonObject objTime = ((JsonObject) (ja.get(i))).get("Time").getAsJsonObject();
-				r1.setVreme(objTime.get("time").getAsString());
-			} else {
-				r1.setVreme("DNF");
+					JsonObject objTime = ((JsonObject) (ja.get(i1))).get("Time").getAsJsonObject();
+					r1.setVreme(objTime.get("time").getAsString());
+				} else {
+					r1.setVreme("DNF");
+				}
+				r.add(r1);
 			}
-			r.add(r1);
+			serijalizacijaRezultataUJson(r,i+1,t.get(i).getNazivTrke());
 		}
-		return r;
+		
+		
+		/////////////////////////////////////////////////////////////////////////////////////////
+	
 	}
 
-	public static void serijalizacijaRezultataUJson(LinkedList<Rezultat> r) throws IOException {
+	public static void serijalizacijaRezultataUJson(LinkedList<Rezultat> r, int runda,String nazivTrke) throws Exception {
+		JsonArray c = new JsonArray();
+		/*
+		  Pre otvaranja fajla za serijalizaciju pokupi ono sto je do sada serijalizovano
+		 */
+		c = deserijalCeoRezultat();
 		FileWriter writer = new FileWriter("data/rezultati.json");
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		JsonArray a = new JsonArray();
@@ -345,21 +370,57 @@ public class PullAPIData {
 			a.add(o);
 
 		}
-		writer.write(gson.toJson(a));
+		String rezZaSer = gson.toJson(a);
+		
+		System.out.println(rezZaSer);
+		String zaSer = "{" + "\"nazivTrke\"" + ":" + "\"" + nazivTrke + "\"" + "," + "\"runda\"" + ":" + runda
+				 + "," + "\"serijal\"" + ":"  + true + ","+ "\"Rezultat\""+":" + rezZaSer + "}";
+		JsonObject jo = gson.fromJson(zaSer, JsonObject.class);
+		if(c==null) {//Ako je fajl bio prazan
+		JsonArray b = new JsonArray();
+		b.add(jo);
+		writer.write(gson.toJson(b));
 		writer.close();
+		}else {//Ako je u fajlu nesto postojalo
+			c.add(jo);
+			writer.write(gson.toJson(c));
+			writer.close();
+		}
 
 	}
 
-	public static LinkedList<Rezultat> deserijalizacijaRezultataIzJson() throws Exception {
+	public static JsonArray deserijalCeoRezultat() throws Exception {
+		FileReader reader = new FileReader("data/rezultati.json");
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		JsonArray a = gson.fromJson(reader, JsonArray.class);
+		return a;
+	}
+	public static LinkedList<Rezultat> deserijalizacijaRezultataIzJson(String nazivTrke) throws Exception {
 		FileReader reader = new FileReader("data/rezultati.json");
 		LinkedList<Rezultat> r = new LinkedList<>();
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		JsonArray a = gson.fromJson(reader, JsonArray.class);
+		JsonArray b = new JsonArray();
 		for (int i = 0; i < a.size(); i++) {
-			r.add(gson.fromJson(a.get(i), Rezultat.class));
+			if((((JsonObject) a.get(i)).get("nazivTrke").getAsString()).equals(nazivTrke)) {
+				b = ((JsonObject) a.get(i)).get("Rezultat").getAsJsonArray();
+			}
 
+		}
+		for (int i = 0; i < b.size(); i++) {
+			Rezultat r1 = new Rezultat();
+			r1= gson.fromJson(b.get(i), Rezultat.class);
+			r.add(r1);
 		}
 		return r;
 	}
-
+	public static int daLiJeSerijalizovana() throws Exception {
+		FileReader reader = new FileReader("data/rezultati.json");
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		JsonArray a = new JsonArray();
+		a = gson.fromJson(reader, JsonArray.class);
+		if(a==null)
+			return 0;
+		return a.size();
+	}
 }
