@@ -19,8 +19,8 @@
         "drzava": "German"
       }
     ],
-    "poeni": 0,
-    "pobede": 0
+    "poeni": 114,
+    "pobede": 2
   },
   {
     "nazivTima": "Force India",
@@ -42,7 +42,7 @@
         "drzava": "Mexican"
       }
     ],
-    "poeni": 0,
+    "poeni": 16,
     "pobede": 0
   },
   {
@@ -65,7 +65,7 @@
         "drzava": "Danish"
       }
     ],
-    "poeni": 0,
+    "poeni": 11,
     "pobede": 0
   },
   {
@@ -88,7 +88,7 @@
         "drzava": "Belgian"
       }
     ],
-    "poeni": 0,
+    "poeni": 36,
     "pobede": 0
   },
   {
@@ -111,8 +111,8 @@
         "drzava": "British"
       }
     ],
-    "poeni": 0,
-    "pobede": 0
+    "poeni": 110,
+    "pobede": 1
   },
   {
     "nazivTima": "Red Bull",
@@ -134,8 +134,8 @@
         "drzava": "Dutch"
       }
     ],
-    "poeni": 0,
-    "pobede": 0
+    "poeni": 55,
+    "pobede": 1
   },
   {
     "nazivTima": "Renault",
@@ -157,7 +157,7 @@
         "drzava": "Spanish"
       }
     ],
-    "poeni": 0,
+    "poeni": 35,
     "pobede": 0
   },
   {
@@ -180,7 +180,7 @@
         "drzava": "Monegasque"
       }
     ],
-    "poeni": 0,
+    "poeni": 10,
     "pobede": 0
   },
   {
@@ -203,7 +203,7 @@
         "drzava": "New Zealander"
       }
     ],
-    "poeni": 0,
+    "poeni": 13,
     "pobede": 0
   },
   {
@@ -226,7 +226,7 @@
         "drzava": "Canadian"
       }
     ],
-    "poeni": 0,
+    "poeni": 4,
     "pobede": 0
   }
 ]
