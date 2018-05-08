@@ -29,7 +29,8 @@ public class PullAPIData {
 	public static void main(String[] args) {
 		try {
 			
-			//PullAPIData.deserijalRezultateAPI();
+			PullAPIData.deserijalRezultateAPI();
+			System.out.println(PullAPIData.poslednjeAzuriranje());
 			LinkedList<Rezultat> r = new LinkedList<>();
 			r = PullAPIData.deserijalizacijaRezultataIzJson("Chinese Grand Prix");
 			for (int i = 0; i < r.size(); i++) {
@@ -310,11 +311,20 @@ public class PullAPIData {
 	}
 
 	public static void deserijalRezultateAPI() throws Exception {
-		
+		/////////////////////////////////////////////////////////////////////////////////////////
+		Date d = new Date();
+		SimpleDateFormat simple = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
+		String date = simple.format(d);
+		FileWriter writer = new FileWriter("data/log.json");
+		Gson gson1 = new GsonBuilder().setPrettyPrinting().create();
+		String zaSer = "{" + "\"datumVreme\"" + ":" + "\"" + date + "\"" +"}";
+		JsonObject ob = gson1.fromJson(zaSer, JsonObject.class);
+		writer.write(gson1.toJson(ob));
+		writer.close();
 		/////////////////////////////////////////////////////////////////////////////////////////
 		LinkedList<Trka> t = deserijalTrkeAPI();
 		int k = daLiJeSerijalizovana();
-		System.out.println(t.size());
+		//System.out.println(t.size());
 		for (int i = 0; i < t.size() ; i++) {
 			//Provera da li je trka vec unesena
 			if(k>i)
@@ -508,5 +518,12 @@ public class PullAPIData {
 		serijalTimoveUJson(t);
 	}
 	
-	
+	public static String poslednjeAzuriranje() throws Exception{
+		FileReader reader = new FileReader("data/log.json");
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		JsonObject o = gson.fromJson(reader, JsonObject.class);
+		String s = o.get("datumVreme").getAsString();
+		return s;
+		
+	}
 }
