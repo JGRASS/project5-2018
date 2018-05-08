@@ -57,6 +57,7 @@ public class PullAPIData {
 			for (int i = 0; i < tim.size(); i++) {
 				System.out.println(tim.get(i));
 			}
+			PullAPIData.dodajPoeneVozacima();
 //			PullAPIData.dodeliVozacimaTimove();
 //			PullAPIData.dodeliTimovimaVozace();
 
@@ -423,5 +424,60 @@ public class PullAPIData {
 		if(a==null)
 			return 0;
 		return a.size();
+	}
+	public static void dodajPoeneVozacima() throws Exception {
+		LinkedList<Trka> t = deserijalTrkeIzJson();
+		LinkedList<Vozac> v = deserijalVozaceIzJson();
+		for (int i = 0; i < v.size(); i++) {
+			v.get(i).setPoeni(0);
+			v.get(i).setPobede(0);
+		}
+		serijalVozaceUJson(v);
+		v = deserijalVozaceIzJson();
+		try {
+			for (int i = 0; i < t.size(); i++) {
+				LinkedList<Rezultat> r = deserijalizacijaRezultataIzJson(t.get(i).getNazivTrke());
+				for (int j = 0; j < 10; j++) {
+					for (int j2 = 0;j2< v.size(); j2++) {
+						if(v.get(j2).getPrezime().equals(r.get(j).getVozac().getPrezime())) {
+							int poeni = v.get(j2).getPoeni();
+							int pobede = v.get(j2).getPobede();
+							switch(j) {
+							case 0 : poeni += 25;
+									v.get(j2).setPobede(pobede+1);
+								break;
+							case 1 : poeni += 18;
+							break;
+							case 2 : poeni += 15;
+							break;
+							case 3 : poeni += 12;
+							break;
+							case 4 : poeni += 10;
+							break;
+							case 5 : poeni += 8;
+							break;
+							case 6 : poeni += 6;
+							break;
+							case 7 : poeni += 4;
+							break;
+							case 8 : poeni += 2;
+							break;
+							case 9 : poeni += 1;
+							break;
+							}
+							
+							
+							v.get(j2).setPoeni(poeni);
+							
+							
+							
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+		
+		}
+		serijalVozaceUJson(v);
 	}
 }
