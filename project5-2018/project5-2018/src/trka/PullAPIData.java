@@ -1,7 +1,6 @@
 package trka;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,15 +10,10 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
 
 public class PullAPIData {
 	public static final String DRIVERS_API_URL = "http://ergast.com/api/f1/2018/drivers.json";
@@ -29,7 +23,7 @@ public class PullAPIData {
 	public static void main(String[] args) {
 		try {
 			
-			PullAPIData.deserijalRezultateAPI();
+			//PullAPIData.deserijalRezultateAPI();
 			System.out.println(PullAPIData.poslednjeAzuriranje());
 			LinkedList<Rezultat> r = new LinkedList<>();
 			r = PullAPIData.deserijalizacijaRezultataIzJson("Chinese Grand Prix");
@@ -58,8 +52,10 @@ public class PullAPIData {
 			for (int i = 0; i < tim.size(); i++) {
 				System.out.println(tim.get(i));
 			}
+			
 			PullAPIData.dodajPoeneVozacima();
 			PullAPIData.dodajPoeneTimovima();
+			rangListaVozacaPoTrci("Vettel", "Australian Grand Prix");
 //			PullAPIData.dodeliVozacimaTimove();
 //			PullAPIData.dodeliTimovimaVozace();
 
@@ -486,6 +482,7 @@ public class PullAPIData {
 					}
 				}
 			}
+			//serijalVozaceUJson(v);
 		} catch (Exception e) {
 		
 		}
@@ -526,4 +523,106 @@ public class PullAPIData {
 		return s;
 		
 	}
+		 
+	    public static void rangListaVozaca() throws Exception{
+	         LinkedList<Vozac> v=deserijalVozaceIzJson();
+	         LinkedList<Vozac> vSort=new LinkedList<>();
+	         
+	         Vozac max=v.getFirst();
+	        int j=0;
+	         for (int i = 0; i <v.size(); i++) {
+	        	 max=new Vozac();
+	        	 max.setPoeni(-1);
+				 for (j = 0; j < v.size(); j++) {
+					 if(!vSort.contains(v.get(j)) && max.getPoeni()<=v.get(j).getPoeni()) {
+						 if(max.getPoeni()==v.get(j).getPoeni()) {
+							 if(max.getPobede()>v.get(j).getPobede()) {
+								 continue;
+								 
+							 }
+							 
+						 }
+						 max=v.get(j);
+	        		
+					 	}
+	         	}
+				 vSort.addLast(max);	 	 
+	      }
+	         
+	            FileWriter writer = new FileWriter("data/rangListaVozaca.json");
+	     		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	     		JsonArray a = new JsonArray();
+	     		for (int i = 0; i < vSort.size(); i++) {
+	     			String s = gson.toJson(vSort.get(i));
+	     			JsonObject o = gson.fromJson(s, JsonObject.class);
+	     			a.add(o);
+
+	     		}
+	     		writer.write(gson.toJson(a));
+	     		writer.close();
+
+	  
+	    }
+	    
+	    public static void rangListaTimova() throws Exception{
+	    	LinkedList<Tim> t=deserijalTimoveIzJson();
+	    	LinkedList<Tim> tSort=new LinkedList<>();
+	    	Tim max=t.getFirst();
+		        int j=0;
+		        
+		         for (int i = 0; i <t.size(); i++) {
+		        	 max=new Tim();
+		        	 max.setPoeni(-1);
+					 for (j = 0; j < t.size(); j++) {
+						 if(!tSort.contains(t.get(j)) && max.getPoeni()<=t.get(j).getPoeni()) {
+							if(max.getPoeni()==t.get(j).getPoeni()) {
+								if(max.getPobede()>t.get(j).getPobede())
+									continue;
+							}
+							else
+								max=t.get(j);
+		        		
+						 	}
+		         	}
+					 tSort.addLast(max);	 	 
+		      }
+		         FileWriter writer = new FileWriter("data/rangListaTimova.json");
+		     		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		     		JsonArray a = new JsonArray();
+		     		for (int i = 0; i < tSort.size(); i++) {
+		     			Tim t1=tSort.get(i);
+		     			//String s=gson.toJson(t1);
+		     			String s = "{" + "\"nazivTima\"" + ":" + "\"" + t1.getNazivTima() + "\"" + "," + "\"Poeni\"" + ":" + t1.getPoeni()
+		     					 + "," + "\"Pobede\""+":" + t1.getPobede() + "}";
+		     			JsonObject o = gson.fromJson(s, JsonObject.class);
+		     			a.add(o);
+
+		     		}
+		     		writer.write(gson.toJson(a));
+		     		writer.close();
+		     		
+		    		
+	}
+	    
+	    public static void rangListaVozacaPoTrci(String prezime,String nazivTrke) throws Exception {
+	    	LinkedList<Rezultat> r=deserijalizacijaRezultataIzJson(nazivTrke);
+	    	FileWriter writer = new FileWriter("data/rangListaVozacaPoTrci.json");
+	     	Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	     	JsonArray a = new JsonArray();
+	    	for (int i = 0; i < r.size(); i++) {
+     			Rezultat r1=r.get(i);
+     			//String s=gson.toJson(r1);
+     			String s = "{" + "\"Ime\"" + ":" + "\"" + r1.getVozac().getIme() + "\"" + "," + "\"Prezime\"" + ":" + r1.getVozac().getPrezime()
+     					 +  "}";
+     			JsonObject o = gson.fromJson(s, JsonObject.class);
+     			a.add(o);
+
+     		}
+     		writer.write(gson.toJson(a));
+     		writer.close();
+     		
+			
+	    }
+	   
+	    
 }

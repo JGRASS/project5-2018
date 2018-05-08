@@ -1,0 +1,52 @@
+[
+  {
+    "nazivTima": "Ferrari",
+    "Poeni": 114,
+    "Pobede": 2
+  },
+  {
+    "nazivTima": "Mercedes",
+    "Poeni": 110,
+    "Pobede": 1
+  },
+  {
+    "nazivTima": "Red Bull",
+    "Poeni": 55,
+    "Pobede": 1
+  },
+  {
+    "nazivTima": "McLaren",
+    "Poeni": 36,
+    "Pobede": 0
+  },
+  {
+    "nazivTima": "Renault",
+    "Poeni": 35,
+    "Pobede": 0
+  },
+  {
+    "nazivTima": "Force India",
+    "Poeni": 16,
+    "Pobede": 0
+  },
+  {
+    "nazivTima": "Toro Rosso",
+    "Poeni": 13,
+    "Pobede": 0
+  },
+  {
+    "nazivTima": "Haas F1 Team",
+    "Poeni": 11,
+    "Pobede": 0
+  },
+  {
+    "nazivTima": "Sauber",
+    "Poeni": 10,
+    "Pobede": 0
+  },
+  {
+    "nazivTima": "Williams",
+    "Poeni": 4,
+    "Pobede": 0
+  }
+]

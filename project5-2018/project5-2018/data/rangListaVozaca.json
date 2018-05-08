@@ -1,0 +1,154 @@
+[
+  {
+    "ime": "Lewis",
+    "prezime": "Hamilton",
+    "tim": "Mercedes",
+    "poeni": 70,
+    "pobede": 1,
+    "drzava": "British"
+  },
+  {
+    "ime": "Kimi",
+    "prezime": "Räikkönen",
+    "tim": "Ferrari",
+    "poeni": 48,
+    "pobede": 0,
+    "drzava": "Finnish"
+  },
+  {
+    "ime": "Valtteri",
+    "prezime": "Bottas",
+    "tim": "Mercedes",
+    "poeni": 40,
+    "pobede": 0,
+    "drzava": "Finnish"
+  },
+  {
+    "ime": "Daniel",
+    "prezime": "Ricciardo",
+    "tim": "Red Bull",
+    "poeni": 37,
+    "pobede": 1,
+    "drzava": "Australian"
+  },
+  {
+    "ime": "Fernando",
+    "prezime": "Alonso",
+    "tim": "McLaren",
+    "poeni": 28,
+    "pobede": 0,
+    "drzava": "Spanish"
+  },
+  {
+    "ime": "Nico",
+    "prezime": "Hülkenberg",
+    "tim": "Renault",
+    "poeni": 22,
+    "pobede": 0,
+    "drzava": "German"
+  },
+  {
+    "ime": "Max",
+    "prezime": "Verstappen",
+    "tim": "Red Bull",
+    "poeni": 18,
+    "pobede": 0,
+    "drzava": "Dutch"
+  },
+  {
+    "ime": "Sergio",
+    "prezime": "Pérez",
+    "tim": "Force India",
+    "poeni": 15,
+    "pobede": 0,
+    "drzava": "Mexican"
+  },
+  {
+    "ime": "Carlos",
+    "prezime": "Sainz",
+    "tim": "Renault",
+    "poeni": 13,
+    "pobede": 0,
+    "drzava": "Spanish"
+  },
+  {
+    "ime": "Pierre",
+    "prezime": "Gasly",
+    "tim": "Toro Rosso",
+    "poeni": 12,
+    "pobede": 0,
+    "drzava": "French"
+  },
+  {
+    "ime": "Kevin",
+    "prezime": "Magnussen",
+    "tim": "Haas F1 Team",
+    "poeni": 11,
+    "pobede": 0,
+    "drzava": "Danish"
+  },
+  {
+    "ime": "Charles",
+    "prezime": "Leclerc",
+    "tim": "Sauber",
+    "poeni": 8,
+    "pobede": 0,
+    "drzava": "Monegasque"
+  },
+  {
+    "ime": "Stoffel",
+    "prezime": "Vandoorne",
+    "tim": "McLaren",
+    "poeni": 8,
+    "pobede": 0,
+    "drzava": "Belgian"
+  },
+  {
+    "ime": "Lance",
+    "prezime": "Stroll",
+    "tim": "Williams",
+    "poeni": 4,
+    "pobede": 0,
+    "drzava": "Canadian"
+  },
+  {
+    "ime": "Marcus",
+    "prezime": "Ericsson",
+    "tim": "Sauber",
+    "poeni": 2,
+    "pobede": 0,
+    "drzava": "Swedish"
+  },
+  {
+    "ime": "Brendon",
+    "prezime": "Hartley",
+    "tim": "Toro Rosso",
+    "poeni": 1,
+    "pobede": 0,
+    "drzava": "New Zealander"
+  },
+  {
+    "ime": "Esteban",
+    "prezime": "Ocon",
+    "tim": "Force India",
+    "poeni": 1,
+    "pobede": 0,
+    "drzava": "French"
+  },
+  {
+    "ime": "Romain",
+    "prezime": "Grosjean",
+    "tim": "Haas F1 Team",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "French"
+  },
+  {
+    "ime": "Sergey",
+    "prezime": "Sirotkin",
+    "tim": "Williams",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "Russian"
+  }
+]
