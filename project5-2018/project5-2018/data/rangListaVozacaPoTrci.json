@@ -1,1 +1,102 @@
-[]
+[
+  {
+    "Ime": "Sebastian",
+    "Prezime": "Vettel",
+    "Vreme": "1:29:33.283"
+  },
+  {
+    "Ime": "Lewis",
+    "Prezime": "Hamilton",
+    "Vreme": "+5.036"
+  },
+  {
+    "Ime": "Kimi",
+    "Prezime": "Räikkönen",
+    "Vreme": "+6.309"
+  },
+  {
+    "Ime": "Daniel",
+    "Prezime": "Ricciardo",
+    "Vreme": "+7.069"
+  },
+  {
+    "Ime": "Fernando",
+    "Prezime": "Alonso",
+    "Vreme": "+27.886"
+  },
+  {
+    "Ime": "Max",
+    "Prezime": "Verstappen",
+    "Vreme": "+28.945"
+  },
+  {
+    "Ime": "Nico",
+    "Prezime": "Hülkenberg",
+    "Vreme": "+32.671"
+  },
+  {
+    "Ime": "Valtteri",
+    "Prezime": "Bottas",
+    "Vreme": "+34.339"
+  },
+  {
+    "Ime": "Stoffel",
+    "Prezime": "Vandoorne",
+    "Vreme": "+34.921"
+  },
+  {
+    "Ime": "Carlos",
+    "Prezime": "Sainz",
+    "Vreme": "+45.722"
+  },
+  {
+    "Ime": "Sergio",
+    "Prezime": "Pérez",
+    "Vreme": "+46.817"
+  },
+  {
+    "Ime": "Esteban",
+    "Prezime": "Ocon",
+    "Vreme": "+1:00.278"
+  },
+  {
+    "Ime": "Charles",
+    "Prezime": "Leclerc",
+    "Vreme": "+1:15.759"
+  },
+  {
+    "Ime": "Lance",
+    "Prezime": "Stroll",
+    "Vreme": "+1:18.288"
+  },
+  {
+    "Ime": "Brendon",
+    "Prezime": "Hartley",
+    "Vreme": "DNF"
+  },
+  {
+    "Ime": "Romain",
+    "Prezime": "Grosjean",
+    "Vreme": "DNF"
+  },
+  {
+    "Ime": "Kevin",
+    "Prezime": "Magnussen",
+    "Vreme": "DNF"
+  },
+  {
+    "Ime": "Pierre",
+    "Prezime": "Gasly",
+    "Vreme": "DNF"
+  },
+  {
+    "Ime": "Marcus",
+    "Prezime": "Ericsson",
+    "Vreme": "DNF"
+  },
+  {
+    "Ime": "Sergey",
+    "Prezime": "Sirotkin",
+    "Vreme": "DNF"
+  }
+]

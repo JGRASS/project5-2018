@@ -8,6 +8,14 @@
     "drzava": "British"
   },
   {
+    "ime": "Sebastian",
+    "prezime": "Vettel",
+    "tim": "Ferrari",
+    "poeni": 66,
+    "pobede": 2,
+    "drzava": "German"
+  },
+  {
     "ime": "Kimi",
     "prezime": "Räikkönen",
     "tim": "Ferrari",
@@ -88,20 +96,20 @@
     "drzava": "Danish"
   },
   {
-    "ime": "Charles",
-    "prezime": "Leclerc",
-    "tim": "Sauber",
-    "poeni": 8,
-    "pobede": 0,
-    "drzava": "Monegasque"
-  },
-  {
     "ime": "Stoffel",
     "prezime": "Vandoorne",
     "tim": "McLaren",
     "poeni": 8,
     "pobede": 0,
     "drzava": "Belgian"
+  },
+  {
+    "ime": "Charles",
+    "prezime": "Leclerc",
+    "tim": "Sauber",
+    "poeni": 8,
+    "pobede": 0,
+    "drzava": "Monegasque"
   },
   {
     "ime": "Lance",
@@ -120,14 +128,6 @@
     "drzava": "Swedish"
   },
   {
-    "ime": "Brendon",
-    "prezime": "Hartley",
-    "tim": "Toro Rosso",
-    "poeni": 1,
-    "pobede": 0,
-    "drzava": "New Zealander"
-  },
-  {
     "ime": "Esteban",
     "prezime": "Ocon",
     "tim": "Force India",
@@ -136,12 +136,12 @@
     "drzava": "French"
   },
   {
-    "ime": "Romain",
-    "prezime": "Grosjean",
-    "tim": "Haas F1 Team",
-    "poeni": 0,
+    "ime": "Brendon",
+    "prezime": "Hartley",
+    "tim": "Toro Rosso",
+    "poeni": 1,
     "pobede": 0,
-    "drzava": "French"
+    "drzava": "New Zealander"
   },
   {
     "ime": "Sergey",
@@ -150,5 +150,13 @@
     "poeni": 0,
     "pobede": 0,
     "drzava": "Russian"
+  },
+  {
+    "ime": "Romain",
+    "prezime": "Grosjean",
+    "tim": "Haas F1 Team",
+    "poeni": 0,
+    "pobede": 0,
+    "drzava": "French"
   }
 ]

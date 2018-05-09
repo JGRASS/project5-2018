@@ -56,6 +56,7 @@ public class PullAPIData {
 			PullAPIData.dodajPoeneVozacima();
 			PullAPIData.dodajPoeneTimovima();
 			rangListaVozacaPoTrci("Vettel", "Australian Grand Prix");
+			PullAPIData.rangListaVozaca();
 //			PullAPIData.dodeliVozacimaTimove();
 //			PullAPIData.dodeliTimovimaVozace();
 
@@ -612,8 +613,9 @@ public class PullAPIData {
 	    	for (int i = 0; i < r.size(); i++) {
      			Rezultat r1=r.get(i);
      			//String s=gson.toJson(r1);
-     			String s = "{" + "\"Ime\"" + ":" + "\"" + r1.getVozac().getIme() + "\"" + "," + "\"Prezime\"" + ":" + r1.getVozac().getPrezime()
-     					 +  "}";
+     			String s = "{" + "\"Ime\"" + ":" + "\"" + r1.getVozac().getIme() + "\"" + "," + "\"Prezime\"" + ":" +"\""+
+     					r1.getVozac().getPrezime() + "\"" + 
+     					 ","+"\"Vreme\"" +":"+"\"" + r1.getVreme()+ "\"" + "}";
      			JsonObject o = gson.fromJson(s, JsonObject.class);
      			a.add(o);
 
