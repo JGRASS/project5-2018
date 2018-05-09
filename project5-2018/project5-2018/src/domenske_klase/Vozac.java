@@ -1,4 +1,4 @@
-package trka;
+package domenske_klase;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -12,6 +12,7 @@ public class Vozac {
 	private int pobede;
 	@SerializedName(value = "drzava", alternate = "nationality")
 	private String drzava;
+	
 	public String getIme() {
 		return ime;
 	}

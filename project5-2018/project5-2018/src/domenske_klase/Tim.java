@@ -1,4 +1,4 @@
-package trka;
+package domenske_klase;
 
 import java.util.LinkedList;
 
@@ -10,6 +10,7 @@ public class Tim {
 	private LinkedList<Vozac> vozaci = new LinkedList<Vozac>();
 	private int poeni;
 	private int pobede;
+	
 	public String getNazivTima() {
 		return nazivTima;
 	}

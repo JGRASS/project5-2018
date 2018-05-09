@@ -1,4 +1,4 @@
-package trka;
+package domenske_klase;
 
 import java.util.LinkedList;
 
@@ -8,6 +8,7 @@ public class Trka {
 	private String datum;
 	private int runda;
 	private LinkedList<Rezultat> rezultati;
+	
 	public String getNazivTrke() {
 		return nazivTrke;
 	}

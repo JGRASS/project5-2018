@@ -1,10 +1,11 @@
-package trka;
+package domenske_klase;
 
 
 public class Rezultat {
 	private Vozac vozac;
 	private String vreme;
 	private int mesto;
+	
 	public Vozac getVozac() {
 		return vozac;
 	}
