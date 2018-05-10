@@ -58,5 +58,4 @@ public class VozaciTableModel extends AbstractTableModel {
 		Vozac v=vozaci.get(row);
 		return v.getPrezime();		
 	}
-
 }

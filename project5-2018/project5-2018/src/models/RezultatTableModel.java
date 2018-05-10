@@ -11,7 +11,7 @@ import domenske_klase.Vozac;
 
 public class RezultatTableModel extends AbstractTableModel {
 
-	private final String[] kolone = new String[] { "Vozac", "Vreme", "Mesto" };
+	private final String[] kolone = new String[] { "Vozac", "Vreme", "Mesto"};
 	private LinkedList<Rezultat> rezultati = new LinkedList<Rezultat>();
 
 	@Override
@@ -46,7 +46,7 @@ public class RezultatTableModel extends AbstractTableModel {
 	}
 
 	public void staviSveRezultateUModel(LinkedList<Rezultat> rez) throws Exception {
-		if (rez.isEmpty()) throw new RuntimeException("Trka se jos uvek nije odžala!");
+		if (rez.isEmpty()) throw new RuntimeException("Trka se još uvek nije odžala");
 			this.rezultati = rez;
 			fireTableDataChanged();
 		

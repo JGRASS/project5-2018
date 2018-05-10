@@ -23,6 +23,7 @@ import javax.swing.JTextArea;
 import domenske_klase.Rezultat;
 import domenske_klase.Vozac;
 import models.RezultatTableModel;
+import models.TimTableModel;
 import models.TrkeTableModel;
 import models.VozaciTableModel;
 import sistemski_kontroler.SistemskiKontroler;
@@ -72,6 +73,10 @@ public class GlavniProzor extends JFrame {
 	private JPanel tabRezTrkeSouth;
 	private JButton btnZatvoriRezTrke;
 	private JTable tableRezultati;
+	private JTable tableTimovi;
+	private JPanel panelEastTimovi;
+	private JButton btnPrikaziTimove;
+	private JButton btnPrikaziVozace_1;
 
 	/**
 	 * Create the frame.
@@ -237,7 +242,8 @@ public class GlavniProzor extends JFrame {
 		if (panelTimovi == null) {
 			panelTimovi = new JPanel();
 			panelTimovi.setLayout(new BorderLayout(0, 0));
-			panelTimovi.add(getScrollPaneTimovi(), BorderLayout.CENTER);
+			panelTimovi.add(getPanelEastTimovi(), BorderLayout.EAST);
+			panelTimovi.add(getScrollPaneTimovi());
 		}
 		return panelTimovi;
 	}
@@ -270,8 +276,8 @@ public class GlavniProzor extends JFrame {
 
 	private JButton getButtonRezultati() {
 		if (btnRezultati == null) {
-			btnRezultati = new JButton("Rezultati");
-			btnRezultati.setToolTipText("Prikaz dostignuca po trkama za odabranog vozaca");
+			btnRezultati = new JButton("Rezultati vozaca");
+			btnRezultati.setToolTipText("Prikaz ostvarenih rezultata u trkama za odabranog vozaca");
 			btnRezultati.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			btnRezultati.setEnabled(false);
 			btnRezultati.addActionListener(new ActionListener() {
@@ -371,6 +377,7 @@ public class GlavniProzor extends JFrame {
 	private JScrollPane getScrollPaneTimovi() {
 		if (scrollPaneTimovi == null) {
 			scrollPaneTimovi = new JScrollPane();
+			scrollPaneTimovi.setViewportView(getTableTimovi());
 
 		}
 		return scrollPaneTimovi;
@@ -439,7 +446,7 @@ public class GlavniProzor extends JFrame {
 
 	private JButton getBtnRezultat() {
 		if (btnRezultat == null) {
-			btnRezultat = new JButton("Rezultat");
+			btnRezultat = new JButton("Rezultati trke");
 			btnRezultat.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					tabbedPane.addTab("Rezultati trke " + GUIKontroler.selektovanaTrka(), getTabRezTrke());
@@ -517,5 +524,53 @@ public class GlavniProzor extends JFrame {
 			tableRezultati.getTableHeader().setReorderingAllowed(false);
 		}
 		return tableRezultati;
+	}
+	public JTable getTableTimovi() {
+		if (tableTimovi == null) {
+			tableTimovi = new JTable();
+			tableTimovi.setModel(new TimTableModel());
+			tableTimovi.setShowVerticalLines(false);
+			tableTimovi.setShowGrid(false);
+			tableTimovi.setShowHorizontalLines(false);
+			tableTimovi.getTableHeader().setReorderingAllowed(false);
+		}
+		return tableTimovi;
+	}
+	private JPanel getPanelEastTimovi() {
+		if (panelEastTimovi == null) {
+			panelEastTimovi = new JPanel();
+			panelEastTimovi.setPreferredSize(new Dimension(150, 0));
+			panelEastTimovi.add(getBtnPrikaziTimove());
+			panelEastTimovi.add(getBtnPrikaziVozace_1());
+		}
+		return panelEastTimovi;
+	}
+	private JButton getBtnPrikaziTimove() {
+		if (btnPrikaziTimove == null) {
+			btnPrikaziTimove = new JButton("Prikazi timove");
+			btnPrikaziTimove.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.prikaziSveTimove();
+				}
+			});
+			btnPrikaziTimove.setContentAreaFilled(false);
+		}
+		return btnPrikaziTimove;
+	}
+	private JButton getBtnPrikaziVozace_1() {
+		if (btnPrikaziVozace_1 == null) {
+			btnPrikaziVozace_1 = new JButton("Prikazi vozace");
+			btnPrikaziVozace_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					TimTableModel model=(TimTableModel) tableTimovi.getModel();
+					String s=model.vratiSelektovaniTim(tableTimovi.getSelectedRow());
+					tabbedPane.setSelectedIndex(tabbedPane.getSelectedIndex()+1);
+					tableVozaci.setRowSelectionAllowed(true);
+					/////////////////////////////
+				}
+			});
+			btnPrikaziVozace_1.setContentAreaFilled(false);
+		}
+		return btnPrikaziVozace_1;
 	}
 }

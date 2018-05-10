@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import domenske_klase.Trka;
 import domenske_klase.Vozac;
 import models.RezultatTableModel;
+import models.TimTableModel;
 import models.TrkeTableModel;
 import models.VozaciTableModel;
 import sistemski_kontroler.SistemskiKontroler;
@@ -62,6 +63,17 @@ public class GUIKontroler {
 			return model.vratiSelektovanuTrku(gp.getTableTrke().getSelectedRow());
 		}
 		return "";
+	}
+	
+	public static void prikaziSveTimove(){
+		TimTableModel model = (TimTableModel)(gp.getTableTimovi().getModel());
+		try {
+			model.staviSveTimoveUModel(SistemskiKontroler.deserijalTimoveIzJson());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }
