@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.util.LinkedList;
@@ -71,6 +73,8 @@ public class GlavniProzor extends JFrame {
 	private JScrollPane scrollPaneRez;
 	private JPanel tabRez;
 	private JTextArea textAreaRezultati;
+	private JPanel tabRezSouth;
+	private JButton btnZatvoriRez;
 	
 
 	/**
@@ -262,7 +266,7 @@ public class GlavniProzor extends JFrame {
 			btnRezultati.setEnabled(false);
 			btnRezultati.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					tabbedPane.addTab("Rezultati", getTabRez());
+					tabbedPane.addTab("Rezultati "+GUIKontroler.selektovanoPrezime(), getTabRez());
 					tabbedPane.setSelectedIndex(2);
 
 				}
@@ -277,10 +281,36 @@ public class GlavniProzor extends JFrame {
 			tabRez = new JPanel();
 			tabRez.setLayout(new BorderLayout(0, 0));
 			tabRez.add(getScrollPaneRez(), BorderLayout.CENTER);
+			tabRez.add(getTabRezSouth(), BorderLayout.SOUTH);
 		}
 		return tabRez;
 	}
+	private JPanel getTabRezSouth() {
+		if (tabRezSouth == null) {
+			tabRezSouth = new JPanel();
+			tabRezSouth.setLayout(null);	
+			tabRezSouth.setPreferredSize(new Dimension(100, 50));
+			tabRezSouth.add(getBtnZatvoriRez());
+		}
+		return tabRezSouth;
+	}
+	
+	private JButton getBtnZatvoriRez() {
+		if (btnZatvoriRez == null) {
+			btnZatvoriRez = new JButton("Zatvori");
+			btnZatvoriRez.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int i=tabbedPane.getSelectedIndex();
+					if(i!=-1)
+					tabbedPane.remove(i);
+				}
+			});
+			btnZatvoriRez.setBounds(210, 12, 117, 25);
+		}
+		return btnZatvoriRez;
+	}
 
+	
 	private JScrollPane getScrollPaneRez() {
 		if (scrollPaneRez == null) {
 			scrollPaneRez = new JScrollPane();
@@ -303,6 +333,7 @@ public class GlavniProzor extends JFrame {
 				e.printStackTrace();
 			}			
 		}
+		textAreaRezultati.setEditable(false);
 		return textAreaRezultati;
 	}
 	private JButton getBtnRangiraj() {
