@@ -27,6 +27,7 @@ import sistemske_operacije.SOPoslednjeAzuriranje;
 import sistemske_operacije.SORangListaTimova;
 import sistemske_operacije.SORangListaVozaca;
 import sistemske_operacije.SORangListaVozacaPoTrci;
+import sistemske_operacije.SORezultatiPoVozacu;
 import sistemske_operacije.SOSerijalTimoveUJson;
 import sistemske_operacije.SOSerijalTrkeUJson;
 import sistemske_operacije.SOSerijalVozaceUJson;
@@ -37,7 +38,7 @@ public class SistemskiKontroler {
 	public static final String CONSTRUCTORS_API_URL = "http://ergast.com/api/f1/2018/constructors.json";
 	public static final String RACES_API_URL = "http://ergast.com/api/f1/2018.json";
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		try {
 
 			// PullAPIData.deserijalRezultateAPI();
@@ -83,7 +84,7 @@ public class SistemskiKontroler {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 
 	
 	public static String getContent(String driversApiUrl) throws IOException {
@@ -179,6 +180,9 @@ public class SistemskiKontroler {
 
 	public void rangListaVozacaPoTrci(String prezime, String nazivTrke) throws Exception {
 		SORangListaVozacaPoTrci.izvrsi(prezime, nazivTrke);
+	}
+	public static LinkedList<String> izvrsi(String prezime) throws IOException{
+		return SORezultatiPoVozacu.izvrsi(prezime);
 	}
 
 }

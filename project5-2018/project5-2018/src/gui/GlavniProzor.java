@@ -263,8 +263,7 @@ public class GlavniProzor extends JFrame {
 			btnRangiraj.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
-						GUIKontroler.sistemskiKontroler.rangListaVozaca();
-						vozaci=SistemskiKontroler.deserijalVozaceIzJson();
+						vozaci=GUIKontroler.sistemskiKontroler.rangListaVozaca();
 						GUIKontroler.prikaziSveVozace(vozaci);
 					} catch (Exception e1) {
 						JOptionPane.showMessageDialog(null, e1.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
