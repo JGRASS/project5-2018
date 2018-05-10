@@ -74,6 +74,7 @@ public class SistemskiKontroler {
 			SistemskiKontroler.dodajPoeneTimovima();
 			rangListaVozacaPoTrci("Vettel", "Australian Grand Prix");
 			SistemskiKontroler.rangListaVozaca();
+			SistemskiKontroler.rangListaTimova();
 			 SistemskiKontroler.dodeliVozacimaTimove();
 			SistemskiKontroler.dodeliTimovimaVozace();
 
