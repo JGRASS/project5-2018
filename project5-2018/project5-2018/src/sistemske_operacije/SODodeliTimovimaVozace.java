@@ -12,8 +12,19 @@ public class SODodeliTimovimaVozace {
 		LinkedList<Vozac> v = SistemskiKontroler.deserijalVozaceIzJson();
 		for (int i = 0; i < v.size(); i++) {
 			for (int j = 0; j < t.size(); j++) {
-				if (v.get(i).getTim().equals(t.get(j).getNazivTima()))
+				if (v.get(i).getTim().equals(t.get(j).getNazivTima())) {
+					boolean flag = false;
+					for (int j2 = 0; j2 < t.get(j).getVozaci().size(); j2++) {
+						if(t.get(j).getVozaci().get(j2).getPrezime().equals(v.get(i).getPrezime())) {
+							flag = true;
+							break;
+						}
+					}
+					if(flag)
+						continue;
 					t.get(j).setVozaci(v.get(i));
+					
+				}
 			}
 		}
 		SistemskiKontroler.serijalTimoveUJson(t);

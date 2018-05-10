@@ -37,7 +37,7 @@ public class SistemskiKontroler {
 	public static final String CONSTRUCTORS_API_URL = "http://ergast.com/api/f1/2018/constructors.json";
 	public static final String RACES_API_URL = "http://ergast.com/api/f1/2018.json";
 
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		try {
 
 			// PullAPIData.deserijalRezultateAPI();
@@ -74,8 +74,8 @@ public class SistemskiKontroler {
 			SistemskiKontroler.dodajPoeneTimovima();
 			rangListaVozacaPoTrci("Vettel", "Australian Grand Prix");
 			SistemskiKontroler.rangListaVozaca();
-			// PullAPIData.dodeliVozacimaTimove();
-			// PullAPIData.dodeliTimovimaVozace();
+			 SistemskiKontroler.dodeliVozacimaTimove();
+			SistemskiKontroler.dodeliTimovimaVozace();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -83,7 +83,7 @@ public class SistemskiKontroler {
 		}
 
 	}
-*/
+
 	
 	public static String getContent(String driversApiUrl) throws IOException {
 		return SOGetContent.izvrsi(driversApiUrl);
