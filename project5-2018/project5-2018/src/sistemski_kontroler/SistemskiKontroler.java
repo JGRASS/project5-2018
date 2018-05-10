@@ -174,8 +174,8 @@ public class SistemskiKontroler {
 		return SORangListaVozaca.izvrsi();
 	}
 
-	public void rangListaTimova() throws Exception {
-		SORangListaTimova.izvrsi();
+	public LinkedList<Tim> rangListaTimova() throws Exception {
+		return SORangListaTimova.izvrsi();
 	}
 
 	public void rangListaVozacaPoTrci(String prezime, String nazivTrke) throws Exception {

@@ -12,14 +12,14 @@ import domenske_klase.Tim;
 import sistemski_kontroler.SistemskiKontroler;
 /**
  * Klasa koja predstavlja deserijalizaciju vremena poslednjeg preuzimanja podataka sa interneta o trci Formule 1
- * @author Monika Milenkoviæ
+ * @author Monika Milenkoviï¿½
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Duï¿½ko Miloï¿½eviï¿½
  * @version 1.0
  */
 public class SORangListaTimova {
 
-	public static void izvrsi() throws Exception {
+	public static LinkedList<Tim> izvrsi() throws Exception {
 		LinkedList<Tim> t = SistemskiKontroler.deserijalTimoveIzJson();
 		LinkedList<Tim> tSort = new LinkedList<>();
 		Tim max = t.getFirst();
@@ -40,20 +40,6 @@ public class SORangListaTimova {
 			}
 			tSort.addLast(max);
 		}
-		FileWriter writer = new FileWriter("data/rangListaTimova.json");
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		JsonArray a = new JsonArray();
-		for (int i = 0; i < tSort.size(); i++) {
-			Tim t1 = tSort.get(i);
-			// String s=gson.toJson(t1);
-			String s = "{" + "\"nazivTima\"" + ":" + "\"" + t1.getNazivTima() + "\"" + "," + "\"Poeni\"" + ":"
-					+ t1.getPoeni() + "," + "\"Pobede\"" + ":" + t1.getPobede() + "}";
-			JsonObject o = gson.fromJson(s, JsonObject.class);
-			a.add(o);
-
-		}
-		writer.write(gson.toJson(a));
-		writer.close();
-
+		return tSort;
 	}
 }
