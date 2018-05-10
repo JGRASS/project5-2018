@@ -181,7 +181,7 @@ public class SistemskiKontroler {
 	public void rangListaVozacaPoTrci(String prezime, String nazivTrke) throws Exception {
 		SORangListaVozacaPoTrci.izvrsi(prezime, nazivTrke);
 	}
-	public static LinkedList<String> izvrsi(String prezime) throws IOException{
+	public static LinkedList<String> rezultatiPoVozacu(String prezime) throws IOException{
 		return SORezultatiPoVozacu.izvrsi(prezime);
 	}
 

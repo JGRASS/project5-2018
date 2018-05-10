@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.util.LinkedList;
 
@@ -20,6 +21,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 import domenske_klase.Vozac;
@@ -38,7 +40,11 @@ import java.awt.event.FocusEvent;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.awt.Cursor;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
+
 
 public class GlavniProzor extends JFrame {
 
@@ -61,6 +67,11 @@ public class GlavniProzor extends JFrame {
 	private JButton btnPrikaziVozace;
 	private JButton btnRezultati;
 	private JButton btnRangiraj;
+	private JScrollPane scrollPaneTimovi;
+	private JScrollPane scrollPaneRez;
+	private JPanel tabRez;
+	private JTextArea textAreaRezultati;
+	
 
 	/**
 	 * Create the frame.
@@ -164,7 +175,7 @@ public class GlavniProzor extends JFrame {
 			tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			tabbedPane.setBorder(null);
 			tabbedPane.setPreferredSize(new Dimension(180, 200));
-			tabbedPane.addTab("New tab", null, getPanelTimovi(), null);
+			tabbedPane.addTab("Timovi", null, getPanelTimovi(), null);
 			tabbedPane.addTab("Vozaci", null, getPanelVozaci(), null);
 		}
 		return tabbedPane;
@@ -195,7 +206,7 @@ public class GlavniProzor extends JFrame {
 				@Override
 				public void mouseReleased(MouseEvent arg0) {
 					btnRezultati.setEnabled(true);
-					
+
 				}
 			});
 			tableVozaci.setModel(new VozaciTableModel());
@@ -204,7 +215,6 @@ public class GlavniProzor extends JFrame {
 			tableVozaci.setShowHorizontalLines(false);
 			tableVozaci.getTableHeader().setReorderingAllowed(false);
 
-			
 		}
 		return tableVozaci;
 	}
@@ -212,6 +222,8 @@ public class GlavniProzor extends JFrame {
 	private JPanel getPanelTimovi() {
 		if (panelTimovi == null) {
 			panelTimovi = new JPanel();
+			panelTimovi.setLayout(new BorderLayout(0, 0));
+			panelTimovi.add(getScrollPaneTimovi(), BorderLayout.CENTER);
 		}
 		return panelTimovi;
 	}
@@ -250,6 +262,8 @@ public class GlavniProzor extends JFrame {
 			btnRezultati.setEnabled(false);
 			btnRezultati.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					tabbedPane.addTab("Rezultati", getTabRez());
+					tabbedPane.setSelectedIndex(2);
 
 				}
 			});
@@ -257,13 +271,47 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnRezultati;
 	}
+
+	private JPanel getTabRez() {
+		if (tabRez == null) {
+			tabRez = new JPanel();
+			tabRez.setLayout(new BorderLayout(0, 0));
+			tabRez.add(getScrollPaneRez(), BorderLayout.CENTER);
+		}
+		return tabRez;
+	}
+
+	private JScrollPane getScrollPaneRez() {
+		if (scrollPaneRez == null) {
+			scrollPaneRez = new JScrollPane();
+			scrollPaneRez.setViewportView(getTextAreaRezultati());
+		}
+		return scrollPaneRez;
+	}
+	private JTextArea getTextAreaRezultati() {
+		if (textAreaRezultati == null) {
+			textAreaRezultati = new JTextArea();
+			textAreaRezultati.append("      Trka\t\tVreme\tMesto\n");
+			LinkedList<String> s;
+			try {
+				s = SistemskiKontroler.rezultatiPoVozacu(GUIKontroler.selektovanoPrezime());
+				for (int i = 0; i < s.size(); i++) {
+					textAreaRezultati.append(s.get(i)+"\n");
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}
+		return textAreaRezultati;
+	}
 	private JButton getBtnRangiraj() {
 		if (btnRangiraj == null) {
 			btnRangiraj = new JButton("Rangiraj vozace");
 			btnRangiraj.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
-						vozaci=GUIKontroler.sistemskiKontroler.rangListaVozaca();
+						vozaci = GUIKontroler.sistemskiKontroler.rangListaVozaca();
 						GUIKontroler.prikaziSveVozace(vozaci);
 					} catch (Exception e1) {
 						JOptionPane.showMessageDialog(null, e1.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
@@ -275,4 +323,14 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnRangiraj;
 	}
+
+	private JScrollPane getScrollPaneTimovi() {
+		if (scrollPaneTimovi == null) {
+			scrollPaneTimovi = new JScrollPane();
+
+		}
+		return scrollPaneTimovi;
+	}
+
+	
 }

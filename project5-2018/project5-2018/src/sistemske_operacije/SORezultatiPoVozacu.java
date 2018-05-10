@@ -3,6 +3,7 @@ package sistemske_operacije;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import com.google.gson.Gson;
@@ -46,4 +47,20 @@ public class SORezultatiPoVozacu {
 		reader.close();
 		return rez;
 	}
+	
+	public static void main(String[] args) {
+		try {
+			LinkedList<String> s=izvrsi("Hamilton");
+			Object[] niz=s.toArray();
+			for (int i = 0; i < niz.length; i++) {
+				System.out.println(niz[i]);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 }

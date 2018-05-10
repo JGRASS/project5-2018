@@ -43,15 +43,20 @@ public class VozaciTableModel extends AbstractTableModel {
 
 		}
 	}
-	
+
 	@Override
 	public String getColumnName(int column) {
 		return kolone[column];
-}
-	
+	}
+
 	public void staviSveValuteUModel(LinkedList<Vozac> vozaci) {
-		this.vozaci=vozaci;
+		this.vozaci = vozaci;
 		fireTableDataChanged();
-}
+	}
+	
+	public String vratiSelektovanoPrezime(int row) {
+		Vozac v=vozaci.get(row);
+		return v.getPrezime();		
+	}
 
 }

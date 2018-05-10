@@ -31,9 +31,11 @@ public class GUIKontroler {
 		model.staviSveValuteUModel(vozaci);
 	}
 	
-	
-		
-	
-
-
+	public static String selektovanoPrezime() {
+		if (gp.getTableVozaci().getSelectedRow() != -1) {
+			VozaciTableModel model = (VozaciTableModel)(gp.getTableVozaci().getModel());
+			return model.vratiSelektovanoPrezime(gp.getTableVozaci().getSelectedRow());
+		}
+		return "";
+	}
 }
