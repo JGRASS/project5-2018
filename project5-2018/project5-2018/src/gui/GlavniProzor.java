@@ -1,0 +1,253 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.util.LinkedList;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.JTabbedPane;
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
+import javax.swing.JMenu;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import domenske_klase.Vozac;
+import models.VozaciTableModel;
+import javax.swing.ScrollPaneConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JInternalFrame;
+import javax.swing.JDesktopPane;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.FlowLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class GlavniProzor extends JFrame {
+
+	private JPanel contentPane;
+	private JPanel centralPanel;
+	private JPanel southPanel;
+	private JButton btnAzuriraj;
+	private JLabel lblDatumPoslednjegAzuriranja;
+	private JTextField textFieldAzuriranje;
+	private JMenuBar menuBar;
+	private JMenu mnFile;
+	private JScrollPane scrollPane;
+	private JTabbedPane tabbedPane;
+	private JPanel panelVozaci;
+	private JScrollPane scrollPaneVozaci;
+	private JTable tableVozaci;
+	private LinkedList<Vozac> vozaci;
+	private JPanel panelTimovi;
+	private JPanel eastPanelVozaci;
+	private JButton btnPrikaziVozace;
+	private JButton btnRezultati;
+
+	/**
+	 * Create the frame.
+	 */
+	public GlavniProzor() {
+		setTitle("Aplikacija");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 400);
+		setJMenuBar(getMenuBar_1());
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.add(getCentralPanel(), BorderLayout.CENTER);
+		contentPane.add(getSouthPanel(), BorderLayout.SOUTH);
+		try {
+			// vozaci=GUIKontroler.sistemskiKontroler.deserijalVozaciAPI();
+			GUIKontroler.sistemskiKontroler.dodeliVozacimaTimove();
+			vozaci = GUIKontroler.sistemskiKontroler.deserijalVozaceIzJson();
+
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, e.getStackTrace(), "Greska", JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		}
+
+	}
+
+	private JPanel getCentralPanel() {
+		if (centralPanel == null) {
+			centralPanel = new JPanel();
+			centralPanel.setLayout(new BorderLayout(0, 0));
+			centralPanel.add(getScrollPane());
+		}
+		return centralPanel;
+	}
+
+	private JPanel getSouthPanel() {
+		if (southPanel == null) {
+			southPanel = new JPanel();
+			southPanel.setPreferredSize(new Dimension(0, 80));
+			southPanel.setLayout(null);
+			southPanel.add(getBtnAzuriraj());
+			southPanel.add(getLblDatumPoslednjegAzuriranja());
+			southPanel.add(getTextFieldAzuriranje());
+		}
+		return southPanel;
+	}
+
+	private JButton getBtnAzuriraj() {
+		if (btnAzuriraj == null) {
+			btnAzuriraj = new JButton("Azuriraj");
+			btnAzuriraj.setBounds(210, 12, 117, 25);
+		}
+		return btnAzuriraj;
+	}
+
+	private JLabel getLblDatumPoslednjegAzuriranja() {
+		if (lblDatumPoslednjegAzuriranja == null) {
+			lblDatumPoslednjegAzuriranja = new JLabel("Datum poslednjeg azuriranja:");
+			lblDatumPoslednjegAzuriranja.setBounds(29, 49, 226, 15);
+		}
+		return lblDatumPoslednjegAzuriranja;
+	}
+
+	private JTextField getTextFieldAzuriranje() {
+		if (textFieldAzuriranje == null) {
+			textFieldAzuriranje = new JTextField();
+			textFieldAzuriranje.setBorder(null);
+			textFieldAzuriranje.setEditable(false);
+			textFieldAzuriranje.setBounds(248, 44, 216, 25);
+			textFieldAzuriranje.setColumns(10);
+		}
+		return textFieldAzuriranje;
+	}
+
+	private JMenuBar getMenuBar_1() {
+		if (menuBar == null) {
+			menuBar = new JMenuBar();
+			menuBar.add(getMnFile());
+		}
+		return menuBar;
+	}
+
+	private JMenu getMnFile() {
+		if (mnFile == null) {
+			mnFile = new JMenu("File");
+		}
+		return mnFile;
+	}
+
+	private JScrollPane getScrollPane() {
+		if (scrollPane == null) {
+			scrollPane = new JScrollPane();
+			scrollPane.setViewportBorder(null);
+			scrollPane.setViewportView(getTabbedPane());
+		}
+		return scrollPane;
+	}
+
+	private JTabbedPane getTabbedPane() {
+		if (tabbedPane == null) {
+			tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+			tabbedPane.setBorder(null);
+			tabbedPane.setPreferredSize(new Dimension(180, 200));
+			tabbedPane.addTab("New tab", null, getPanelTimovi(), null);
+			tabbedPane.addTab("Vozaci", null, getPanelVozaci(), null);
+		}
+		return tabbedPane;
+	}
+
+	private JPanel getPanelVozaci() {
+		if (panelVozaci == null) {
+			panelVozaci = new JPanel();
+			panelVozaci.setLayout(new BorderLayout(0, 0));
+			panelVozaci.add(getScrollPaneVozaci(), BorderLayout.CENTER);
+			panelVozaci.add(getEastPanelVozaci(), BorderLayout.EAST);
+		}
+		return panelVozaci;
+	}
+
+	private JScrollPane getScrollPaneVozaci() {
+		if (scrollPaneVozaci == null) {
+			scrollPaneVozaci = new JScrollPane();
+			scrollPaneVozaci.setViewportView(getTableVozaci());
+		}
+		return scrollPaneVozaci;
+	}
+
+	public JTable getTableVozaci() {
+		if (tableVozaci == null) {
+			tableVozaci = new JTable();
+			tableVozaci.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					btnRezultati.setEnabled(true);
+					
+				}
+			});
+			tableVozaci.setModel(new VozaciTableModel());
+			tableVozaci.setShowVerticalLines(false);
+			tableVozaci.setShowGrid(false);
+			tableVozaci.setShowHorizontalLines(false);
+			tableVozaci.getTableHeader().setReorderingAllowed(false);
+
+			
+		}
+		return tableVozaci;
+	}
+
+	private JPanel getPanelTimovi() {
+		if (panelTimovi == null) {
+			panelTimovi = new JPanel();
+		}
+		return panelTimovi;
+	}
+
+	private JPanel getEastPanelVozaci() {
+		if (eastPanelVozaci == null) {
+			eastPanelVozaci = new JPanel();
+			eastPanelVozaci.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			eastPanelVozaci.setPreferredSize(new Dimension(150, 100));
+			eastPanelVozaci.add(getBtnPrikaziVozace());
+			eastPanelVozaci.add(getButtonRezultati());
+		}
+		return eastPanelVozaci;
+	}
+
+	private JButton getBtnPrikaziVozace() {
+		if (btnPrikaziVozace == null) {
+			btnPrikaziVozace = new JButton("Prikazi vozace");
+			btnPrikaziVozace.setContentAreaFilled(false);
+			btnPrikaziVozace.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.prikaziSveVozace(vozaci);
+				}
+			});
+		}
+		return btnPrikaziVozace;
+	}
+
+	private JButton getButtonRezultati() {
+		if (btnRezultati == null) {
+			btnRezultati = new JButton("Rezultati");
+			btnRezultati.setEnabled(false);
+			btnRezultati.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+
+				}
+			});
+			btnRezultati.setContentAreaFilled(false);
+		}
+		return btnRezultati;
+	}
+}

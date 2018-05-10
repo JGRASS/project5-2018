@@ -89,7 +89,7 @@ public class SistemskiKontroler {
 		return SOGetContent.izvrsi(driversApiUrl);
 	}
 
-	public static LinkedList<Vozac> deserijalVozaciAPI() throws Exception {
+	public LinkedList<Vozac> deserijalVozaciAPI() throws Exception {
 		return SODeserijalVozaciAPI.izvrsi(DRIVERS_API_URL);
 	}
 
@@ -101,7 +101,7 @@ public class SistemskiKontroler {
 		return SODeserijalVozaceIzJson.izvrsi();
 	}
 
-	public static LinkedList<Tim> deserijalTimoviAPI() throws Exception {
+	public LinkedList<Tim> deserijalTimoviAPI() throws Exception {
 		return SODeserijalTimoviAPI.izvrsi(CONSTRUCTORS_API_URL);
 	}
 
@@ -117,7 +117,7 @@ public class SistemskiKontroler {
 		return SODeserijalTrkeAPI.izvrsi(RACES_API_URL);
 	}
 
-	public static void serijalTrkeUJson(LinkedList<Trka> t) throws IOException {
+	public void serijalTrkeUJson(LinkedList<Trka> t) throws IOException {
 		SOSerijalTrkeUJson.izvrsi(t);
 	}
 
@@ -125,15 +125,15 @@ public class SistemskiKontroler {
 		return SODeserijalTrkeIzJson.izvrsi();
 	}
 
-	public static void dodeliVozacimaTimove() throws Exception {
+	public void dodeliVozacimaTimove() throws Exception {
 		SODodeliVozacimaTimove.izvrsi();
 	}
 
-	public static void dodeliTimovimaVozace() throws Exception {
+	public void dodeliTimovimaVozace() throws Exception {
 		SODodeliTimovimaVozace.izvrsi();
 	}
 
-	public static void deserijalRezultateAPI() throws Exception {
+	public void deserijalRezultateAPI() throws Exception {
 		SODeserijalRezultateAPI.izvrsi();
 
 	}
@@ -156,27 +156,27 @@ public class SistemskiKontroler {
 		return SODaLiJeSerijalizovana.izvrsi();
 	}
 
-	public static void dodajPoeneVozacima() throws Exception {
+	public void dodajPoeneVozacima() throws Exception {
 		SODodajPoeneVozacima.izvrsi();
 	}
 
-	public static void dodajPoeneTimovima() throws Exception {
+	public void dodajPoeneTimovima() throws Exception {
 		SODodajPoeneTimovima.izvrsi();
 	}
 
-	public static String poslednjeAzuriranje() throws Exception {
+	public String poslednjeAzuriranje() throws Exception {
 		return SOPoslednjeAzuriranje.izvrsi();
 	}
 
-	public static void rangListaVozaca() throws Exception {
+	public void rangListaVozaca() throws Exception {
 		SORangListaVozaca.izvrsi();
 	}
 
-	public static void rangListaTimova() throws Exception {
+	public void rangListaTimova() throws Exception {
 		SORangListaTimova.izvrsi();
 	}
 
-	public static void rangListaVozacaPoTrci(String prezime, String nazivTrke) throws Exception {
+	public void rangListaVozacaPoTrci(String prezime, String nazivTrke) throws Exception {
 		SORangListaVozacaPoTrci.izvrsi(prezime, nazivTrke);
 	}
 
