@@ -21,7 +21,7 @@ public class SORangListaTimova {
 
 		for (int i = 0; i < t.size(); i++) {
 			max = new Tim();
-			max.setPoeni(-1);
+			max.setPoeni(0);
 			for (j = 0; j < t.size(); j++) {
 				if (!tSort.contains(t.get(j)) && max.getPoeni() <= t.get(j).getPoeni()) {
 					if (max.getPoeni() == t.get(j).getPoeni()) {

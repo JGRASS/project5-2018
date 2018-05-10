@@ -21,7 +21,7 @@ public class SORangListaVozaca {
        int j=0;
         for (int i = 0; i <v.size(); i++) {
        	 max=new Vozac();
-       	 max.setPoeni(-1);
+       	 max.setPoeni(0);
 			 for (j = 0; j < v.size(); j++) {
 				 if(!vSort.contains(v.get(j)) && max.getPoeni()<=v.get(j).getPoeni()) {
 					 if(max.getPoeni()==v.get(j).getPoeni()) {
