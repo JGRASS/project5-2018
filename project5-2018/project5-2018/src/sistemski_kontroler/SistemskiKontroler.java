@@ -70,14 +70,14 @@ public class SistemskiKontroler {
 			for (int i = 0; i < tim.size(); i++) {
 				System.out.println(tim.get(i));
 			}
-
+			SistemskiKontroler.dodeliVozacimaTimove();
+			SistemskiKontroler.dodeliTimovimaVozace();
 			SistemskiKontroler.dodajPoeneVozacima();
 			SistemskiKontroler.dodajPoeneTimovima();
 			rangListaVozacaPoTrci("Vettel", "Australian Grand Prix");
 			SistemskiKontroler.rangListaVozaca();
 			SistemskiKontroler.rangListaTimova();
-			 SistemskiKontroler.dodeliVozacimaTimove();
-			SistemskiKontroler.dodeliTimovimaVozace();
+			
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

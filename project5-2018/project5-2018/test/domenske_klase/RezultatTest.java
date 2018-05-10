@@ -48,14 +48,14 @@ public class RezultatTest {
 		Vozac v = new Vozac();
 		v.setPobede(2);
 		r.setVozac(v);
-		assertEquals("2",v.getPobede());
+		assertEquals(2,v.getPobede());
 	}
 	@Test
 	public void testSetVozacPoeni() {
 		Vozac v = new Vozac();
 		v.setPoeni(100);
 		r.setVozac(v);
-		assertEquals("100",v.getPoeni());
+		assertEquals(100,v.getPoeni());
 	}
 	@Test
 	public void testSetVozacTim() {
