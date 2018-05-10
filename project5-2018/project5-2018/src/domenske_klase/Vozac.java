@@ -195,13 +195,13 @@ public class Vozac {
 			throw new RuntimeException("Nije uneto ime drzave");
 		this.drzava = drzava;
 	}
-	/**vraca string koji sadrzi za svakog vozaca njegovo ime,prezime,tim za koji vozi,poene,pobede i drzavu iz koje je.
+	/**vraca string koji sadrzi ime i prezime vozaca.
 	 * @return podaci o vozacu kao String
 	 */
 	@Override
 	public String toString() {
-		return "Vozac [ime=" + ime + ", prezime=" + prezime + ", tim=" + tim + ", poeni=" + poeni + ", pobede=" + pobede
-				+ ", drzava=" + drzava + "]";
+		return ime+" "+prezime;
 	}
+
 	
 }
