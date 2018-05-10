@@ -59,7 +59,7 @@ public class GlavniProzor extends JFrame {
 	private JScrollPane scrollPaneTimovi;
 	private JScrollPane scrollPaneRez;
 	private JPanel tabRez;
-	private JTextArea textAreaRezultati;
+	private JTextArea textAreaRezultati=null;
 	private JPanel tabRezSouth;
 	private JButton btnZatvoriRez;
 	private JPanel panelTrke;
@@ -283,8 +283,19 @@ public class GlavniProzor extends JFrame {
 			btnRezultati.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					tabbedPane.addTab("Rezultati " + GUIKontroler.selektovanoPrezime(), getTabRez());
-					int i = tabbedPane.getTabCount();
-					tabbedPane.setSelectedIndex(i - 1);
+					tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
+					textAreaRezultati.setText("");
+					textAreaRezultati.append("      Trka\t\tVreme\tMesto\n");
+					try {
+						LinkedList<String> s;
+						s = SistemskiKontroler.rezultatiPoVozacu(GUIKontroler.selektovanoPrezime());
+						for (int i = 0; i < s.size(); i++) {
+							textAreaRezultati.append(s.get(i) + "\n");
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 
 				}
 			});
@@ -339,17 +350,6 @@ public class GlavniProzor extends JFrame {
 	private JTextArea getTextAreaRezultati() {
 		if (textAreaRezultati == null) {
 			textAreaRezultati = new JTextArea();
-			textAreaRezultati.append("      Trka\t\tVreme\tMesto\n");
-			LinkedList<String> s;
-			try {
-				s = SistemskiKontroler.rezultatiPoVozacu(GUIKontroler.selektovanoPrezime());
-				for (int i = 0; i < s.size(); i++) {
-					textAreaRezultati.append(s.get(i) + "\n");
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		textAreaRezultati.setEditable(false);
 		return textAreaRezultati;
