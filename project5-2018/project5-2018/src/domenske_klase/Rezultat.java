@@ -10,6 +10,8 @@ public class Rezultat {
 		return vozac;
 	}
 	public void setVozac(Vozac vozac) {
+		if(vozac == null)
+			throw new RuntimeException("Nije unet vozac");
 		this.vozac = vozac;
 	}
 	
@@ -17,12 +19,16 @@ public class Rezultat {
 		return vreme;
 	}
 	public void setVreme(String vreme) {
+		if(vreme == null || vreme.equals(""))
+			throw new RuntimeException("Nije uneto vreme");
 		this.vreme = vreme;
 	}
 	public int getMesto() {
 		return mesto;
 	}
 	public void setMesto(int mesto) {
+		if(mesto < 1)
+			throw new RuntimeException("Mesto ne moze biti 0 ili negativan broj");
 		this.mesto = mesto;
 	}
 	@Override
