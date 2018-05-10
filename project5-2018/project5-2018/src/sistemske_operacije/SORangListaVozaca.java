@@ -13,7 +13,7 @@ import sistemski_kontroler.SistemskiKontroler;
 
 public class SORangListaVozaca {
 	
-	public static void izvrsi() throws Exception{
+	public static LinkedList<Vozac> izvrsi() throws Exception{
         LinkedList<Vozac> v=SistemskiKontroler.deserijalVozaceIzJson();
         LinkedList<Vozac> vSort=new LinkedList<>();
         
@@ -38,19 +38,7 @@ public class SORangListaVozaca {
 			 vSort.addLast(max);	 	 
      }
         
-           FileWriter writer = new FileWriter("data/rangListaVozaca.json");
-    		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    		JsonArray a = new JsonArray();
-    		for (int i = 0; i < vSort.size(); i++) {
-    			String s = gson.toJson(vSort.get(i));
-    			JsonObject o = gson.fromJson(s, JsonObject.class);
-    			a.add(o);
-
-    		}
-    		writer.write(gson.toJson(a));
-    		writer.close();
-
- 
+        return vSort;
    }
 
 }

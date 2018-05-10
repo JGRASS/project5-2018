@@ -168,8 +168,8 @@ public class SistemskiKontroler {
 		return SOPoslednjeAzuriranje.izvrsi();
 	}
 
-	public void rangListaVozaca() throws Exception {
-		SORangListaVozaca.izvrsi();
+	public LinkedList<Vozac> rangListaVozaca() throws Exception {
+		return SORangListaVozaca.izvrsi();
 	}
 
 	public void rangListaTimova() throws Exception {

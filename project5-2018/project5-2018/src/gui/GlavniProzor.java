@@ -24,6 +24,8 @@ import javax.swing.table.DefaultTableModel;
 
 import domenske_klase.Vozac;
 import models.VozaciTableModel;
+import sistemski_kontroler.SistemskiKontroler;
+
 import javax.swing.ScrollPaneConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -36,6 +38,7 @@ import java.awt.event.FocusEvent;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Cursor;
 
 public class GlavniProzor extends JFrame {
 
@@ -57,6 +60,7 @@ public class GlavniProzor extends JFrame {
 	private JPanel eastPanelVozaci;
 	private JButton btnPrikaziVozace;
 	private JButton btnRezultati;
+	private JButton btnRangiraj;
 
 	/**
 	 * Create the frame.
@@ -78,8 +82,7 @@ public class GlavniProzor extends JFrame {
 			vozaci = GUIKontroler.sistemskiKontroler.deserijalVozaceIzJson();
 
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(this, e.getStackTrace(), "Greska", JOptionPane.ERROR_MESSAGE);
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, e.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -219,6 +222,7 @@ public class GlavniProzor extends JFrame {
 			eastPanelVozaci.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			eastPanelVozaci.setPreferredSize(new Dimension(150, 100));
 			eastPanelVozaci.add(getBtnPrikaziVozace());
+			eastPanelVozaci.add(getBtnRangiraj());
 			eastPanelVozaci.add(getButtonRezultati());
 		}
 		return eastPanelVozaci;
@@ -227,6 +231,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnPrikaziVozace() {
 		if (btnPrikaziVozace == null) {
 			btnPrikaziVozace = new JButton("Prikazi vozace");
+			btnPrikaziVozace.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			btnPrikaziVozace.setContentAreaFilled(false);
 			btnPrikaziVozace.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -240,6 +245,8 @@ public class GlavniProzor extends JFrame {
 	private JButton getButtonRezultati() {
 		if (btnRezultati == null) {
 			btnRezultati = new JButton("Rezultati");
+			btnRezultati.setToolTipText("Prikaz dostignuca po trkama za odabranog vozaca");
+			btnRezultati.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			btnRezultati.setEnabled(false);
 			btnRezultati.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -249,5 +256,24 @@ public class GlavniProzor extends JFrame {
 			btnRezultati.setContentAreaFilled(false);
 		}
 		return btnRezultati;
+	}
+	private JButton getBtnRangiraj() {
+		if (btnRangiraj == null) {
+			btnRangiraj = new JButton("Rangiraj vozace");
+			btnRangiraj.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						GUIKontroler.sistemskiKontroler.rangListaVozaca();
+						vozaci=SistemskiKontroler.deserijalVozaceIzJson();
+						GUIKontroler.prikaziSveVozace(vozaci);
+					} catch (Exception e1) {
+						JOptionPane.showMessageDialog(null, e1.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			});
+			btnRangiraj.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			btnRangiraj.setContentAreaFilled(false);
+		}
+		return btnRangiraj;
 	}
 }
