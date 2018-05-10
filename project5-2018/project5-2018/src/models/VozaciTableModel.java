@@ -49,7 +49,7 @@ public class VozaciTableModel extends AbstractTableModel {
 		return kolone[column];
 	}
 
-	public void staviSveValuteUModel(LinkedList<Vozac> vozaci) {
+	public void staviSveVozaceUModel(LinkedList<Vozac> vozaci) {
 		this.vozaci = vozaci;
 		fireTableDataChanged();
 	}

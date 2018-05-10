@@ -63,8 +63,7 @@ public class Vozac {
 	}
 	@Override
 	public String toString() {
-		return "Vozac [ime=" + ime + ", prezime=" + prezime + ", tim=" + tim + ", poeni=" + poeni + ", pobede=" + pobede
-				+ ", drzava=" + drzava + "]";
+		return ime+" "+prezime;
 	}
 	
 }
