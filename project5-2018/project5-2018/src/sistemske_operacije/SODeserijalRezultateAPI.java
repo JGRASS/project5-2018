@@ -68,10 +68,16 @@ public class SODeserijalRezultateAPI {
 				String status = obj.get("status").getAsString();
 				// vreme trke "DNF" onima koji nisu zavrsili trku
 				if (status.equals("Finished")) {
-
+					System.out.println(status);
 					JsonObject objTime = ((JsonObject) (ja.get(i1))).get("Time").getAsJsonObject();
 					r1.setVreme(objTime.get("time").getAsString());
-				} else {
+				} 
+				else if(status.contains("Lap")){
+					System.out.println(status);
+					r1.setVreme(status);
+					
+				}else {
+					System.out.println(status);
 					r1.setVreme("DNF");
 				}
 				r.add(r1);
