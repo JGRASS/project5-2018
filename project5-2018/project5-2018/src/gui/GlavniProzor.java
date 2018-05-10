@@ -1,52 +1,39 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.util.LinkedList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.table.DefaultTableModel;
 
+import domenske_klase.Rezultat;
 import domenske_klase.Vozac;
+import models.RezultatTableModel;
+import models.TimTableModel;
+import models.TrkeTableModel;
 import models.VozaciTableModel;
 import sistemski_kontroler.SistemskiKontroler;
-
-import javax.swing.ScrollPaneConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JInternalFrame;
-import javax.swing.JDesktopPane;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.awt.Cursor;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-
 
 public class GlavniProzor extends JFrame {
 
@@ -75,7 +62,21 @@ public class GlavniProzor extends JFrame {
 	private JTextArea textAreaRezultati;
 	private JPanel tabRezSouth;
 	private JButton btnZatvoriRez;
-	
+	private JPanel panelTrke;
+	private JScrollPane scrollPanelTrke;
+	private JTable tableTrke;
+	private JPanel panelEastTrke;
+	private JButton btnPrikaziTrke;
+	private JButton btnRezultat;
+	private JPanel tabRezTrke;
+	private JScrollPane scrollPaneRezTrke;
+	private JPanel tabRezTrkeSouth;
+	private JButton btnZatvoriRezTrke;
+	private JTable tableRezultati;
+	private JTable tableTimovi;
+	private JPanel panelEastTimovi;
+	private JButton btnPrikaziTimove;
+	private JButton btnPrikaziVozace_1;
 
 	/**
 	 * Create the frame.
@@ -91,11 +92,12 @@ public class GlavniProzor extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.add(getCentralPanel(), BorderLayout.CENTER);
 		contentPane.add(getSouthPanel(), BorderLayout.SOUTH);
+		
 		try {
 			// vozaci=GUIKontroler.sistemskiKontroler.deserijalVozaciAPI();
 			GUIKontroler.sistemskiKontroler.dodeliVozacimaTimove();
-			vozaci = GUIKontroler.sistemskiKontroler.deserijalVozaceIzJson();
-
+			vozaci = SistemskiKontroler.deserijalVozaceIzJson();
+			textFieldAzuriranje.setText(GUIKontroler.sistemskiKontroler.poslednjeAzuriranje());
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
 		}
@@ -126,6 +128,18 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnAzuriraj() {
 		if (btnAzuriraj == null) {
 			btnAzuriraj = new JButton("Azuriraj");
+			btnAzuriraj.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					try {
+						GUIKontroler.sistemskiKontroler.deserijalRezultateAPI();
+						GUIKontroler.sistemskiKontroler.dodajPoeneTimovima();
+						GUIKontroler.sistemskiKontroler.dodajPoeneVozacima();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			});
 			btnAzuriraj.setBounds(210, 12, 117, 25);
 		}
 		return btnAzuriraj;
@@ -179,6 +193,7 @@ public class GlavniProzor extends JFrame {
 			tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			tabbedPane.setBorder(null);
 			tabbedPane.setPreferredSize(new Dimension(180, 200));
+			tabbedPane.addTab("Trke", null, getPanelTrke(), null);
 			tabbedPane.addTab("Timovi", null, getPanelTimovi(), null);
 			tabbedPane.addTab("Vozaci", null, getPanelVozaci(), null);
 		}
@@ -227,7 +242,8 @@ public class GlavniProzor extends JFrame {
 		if (panelTimovi == null) {
 			panelTimovi = new JPanel();
 			panelTimovi.setLayout(new BorderLayout(0, 0));
-			panelTimovi.add(getScrollPaneTimovi(), BorderLayout.CENTER);
+			panelTimovi.add(getPanelEastTimovi(), BorderLayout.EAST);
+			panelTimovi.add(getScrollPaneTimovi());
 		}
 		return panelTimovi;
 	}
@@ -260,14 +276,15 @@ public class GlavniProzor extends JFrame {
 
 	private JButton getButtonRezultati() {
 		if (btnRezultati == null) {
-			btnRezultati = new JButton("Rezultati");
-			btnRezultati.setToolTipText("Prikaz dostignuca po trkama za odabranog vozaca");
+			btnRezultati = new JButton("Rezultati vozaca");
+			btnRezultati.setToolTipText("Prikaz ostvarenih rezultata u trkama za odabranog vozaca");
 			btnRezultati.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			btnRezultati.setEnabled(false);
 			btnRezultati.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					tabbedPane.addTab("Rezultati "+GUIKontroler.selektovanoPrezime(), getTabRez());
-					tabbedPane.setSelectedIndex(2);
+					tabbedPane.addTab("Rezultati " + GUIKontroler.selektovanoPrezime(), getTabRez());
+					int i = tabbedPane.getTabCount();
+					tabbedPane.setSelectedIndex(i - 1);
 
 				}
 			});
@@ -285,24 +302,25 @@ public class GlavniProzor extends JFrame {
 		}
 		return tabRez;
 	}
+
 	private JPanel getTabRezSouth() {
 		if (tabRezSouth == null) {
 			tabRezSouth = new JPanel();
-			tabRezSouth.setLayout(null);	
+			tabRezSouth.setLayout(null);
 			tabRezSouth.setPreferredSize(new Dimension(100, 50));
 			tabRezSouth.add(getBtnZatvoriRez());
 		}
 		return tabRezSouth;
 	}
-	
+
 	private JButton getBtnZatvoriRez() {
 		if (btnZatvoriRez == null) {
 			btnZatvoriRez = new JButton("Zatvori");
 			btnZatvoriRez.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					int i=tabbedPane.getSelectedIndex();
-					if(i!=-1)
-					tabbedPane.remove(i);
+					int i = tabbedPane.getSelectedIndex();
+					if (i != -1)
+						tabbedPane.remove(i);
 				}
 			});
 			btnZatvoriRez.setBounds(210, 12, 117, 25);
@@ -310,7 +328,6 @@ public class GlavniProzor extends JFrame {
 		return btnZatvoriRez;
 	}
 
-	
 	private JScrollPane getScrollPaneRez() {
 		if (scrollPaneRez == null) {
 			scrollPaneRez = new JScrollPane();
@@ -318,6 +335,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return scrollPaneRez;
 	}
+
 	private JTextArea getTextAreaRezultati() {
 		if (textAreaRezultati == null) {
 			textAreaRezultati = new JTextArea();
@@ -326,16 +344,17 @@ public class GlavniProzor extends JFrame {
 			try {
 				s = SistemskiKontroler.rezultatiPoVozacu(GUIKontroler.selektovanoPrezime());
 				for (int i = 0; i < s.size(); i++) {
-					textAreaRezultati.append(s.get(i)+"\n");
+					textAreaRezultati.append(s.get(i) + "\n");
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
+			}
 		}
 		textAreaRezultati.setEditable(false);
 		return textAreaRezultati;
 	}
+
 	private JButton getBtnRangiraj() {
 		if (btnRangiraj == null) {
 			btnRangiraj = new JButton("Rangiraj vozace");
@@ -358,10 +377,200 @@ public class GlavniProzor extends JFrame {
 	private JScrollPane getScrollPaneTimovi() {
 		if (scrollPaneTimovi == null) {
 			scrollPaneTimovi = new JScrollPane();
+			scrollPaneTimovi.setViewportView(getTableTimovi());
 
 		}
 		return scrollPaneTimovi;
 	}
 
-	
+	private JPanel getPanelTrke() {
+		if (panelTrke == null) {
+			panelTrke = new JPanel();
+			panelTrke.setLayout(new BorderLayout(0, 0));
+			panelTrke.add(getScrollPanelTrke(), BorderLayout.CENTER);
+			panelTrke.add(getPanelEastTrke(), BorderLayout.EAST);
+		}
+		return panelTrke;
+	}
+
+	private JScrollPane getScrollPanelTrke() {
+		if (scrollPanelTrke == null) {
+			scrollPanelTrke = new JScrollPane();
+			scrollPanelTrke.setViewportView(getTableTrke());
+		}
+		return scrollPanelTrke;
+	}
+
+	public JTable getTableTrke() {
+		if (tableTrke == null) {
+			tableTrke = new JTable();
+			tableTrke.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					btnRezultat.setEnabled(true);
+
+				}
+			});
+			tableTrke.setModel(new TrkeTableModel());
+			tableTrke.setShowVerticalLines(false);
+			tableTrke.setShowGrid(false);
+			tableTrke.setShowHorizontalLines(false);
+			tableTrke.getTableHeader().setReorderingAllowed(false);
+		}
+		return tableTrke;
+	}
+
+	private JPanel getPanelEastTrke() {
+		if (panelEastTrke == null) {
+			panelEastTrke = new JPanel();
+			panelEastTrke.setPreferredSize(new Dimension(150, 0));
+			panelEastTrke.setLayout(new FlowLayout());
+			panelEastTrke.add(getBtnPrikaziTrke());
+			panelEastTrke.add(getBtnRezultat());
+		}
+		return panelEastTrke;
+	}
+
+	private JButton getBtnPrikaziTrke() {
+		if (btnPrikaziTrke == null) {
+			btnPrikaziTrke = new JButton("Prikazi trke");
+			btnPrikaziTrke.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.prikaziSveTrke();
+				}
+			});
+			btnPrikaziTrke.setContentAreaFilled(false);
+		}
+		return btnPrikaziTrke;
+	}
+
+	private JButton getBtnRezultat() {
+		if (btnRezultat == null) {
+			btnRezultat = new JButton("Rezultati trke");
+			btnRezultat.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					tabbedPane.addTab("Rezultati trke " + GUIKontroler.selektovanaTrka(), getTabRezTrke());
+					int i = tabbedPane.getTabCount();
+					tabbedPane.setSelectedIndex(i - 1);
+					try {
+						GUIKontroler.prikaziSveRezultate();
+					} catch (Exception e1) {
+						int t=tabbedPane.getSelectedIndex();
+						if(t!=-1) 
+							tabbedPane.remove(t);
+						tabbedPane.setSelectedIndex(0);
+						JOptionPane.showMessageDialog(null, e1.getMessage(), "Obavestenje", JOptionPane.INFORMATION_MESSAGE);
+					}
+				}
+			});
+			btnRezultat.setEnabled(false);
+			btnRezultat.setToolTipText("Prikaz rezultata izabrane trke");
+			btnRezultat.setContentAreaFilled(false);
+		}
+		return btnRezultat;
+	}
+
+	private JPanel getTabRezTrke() {
+		if (tabRezTrke == null) {
+			tabRezTrke = new JPanel();
+			tabRezTrke.setLayout(new BorderLayout(0, 0));
+			tabRezTrke.add(getScrollPaneRezTrke(), BorderLayout.CENTER);
+			tabRezTrke.add(getTabRezTrkeSouth(), BorderLayout.SOUTH);
+		}
+		return tabRezTrke;
+	}
+
+	//
+	private JPanel getTabRezTrkeSouth() {
+		if (tabRezTrkeSouth == null) {
+			tabRezTrkeSouth = new JPanel();
+			tabRezTrkeSouth.setLayout(null);
+			tabRezTrkeSouth.setPreferredSize(new Dimension(100, 50));
+			tabRezTrkeSouth.add(getBtnZatvoriRezTrke());
+		}
+		return tabRezTrkeSouth;
+	}
+
+	private JButton getBtnZatvoriRezTrke() {
+		if (btnZatvoriRezTrke == null) {
+			btnZatvoriRezTrke = new JButton("Zatvori");
+			btnZatvoriRezTrke.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int i = tabbedPane.getSelectedIndex();
+					if (i != -1)
+						tabbedPane.remove(i);
+				}
+			});
+			btnZatvoriRezTrke.setBounds(210, 12, 117, 25);
+		}
+		return btnZatvoriRezTrke;
+	}
+
+	private JScrollPane getScrollPaneRezTrke() {
+		if (scrollPaneRezTrke == null) {
+			scrollPaneRezTrke = new JScrollPane();
+			scrollPaneRezTrke.setViewportView(getTableRezultati());
+		}
+		return scrollPaneRezTrke;
+	}
+
+	public JTable getTableRezultati() {
+		if (tableRezultati == null) {
+			tableRezultati = new JTable();
+			tableRezultati.setModel(new RezultatTableModel());
+			tableRezultati.setShowVerticalLines(false);
+			tableRezultati.setShowGrid(false);
+			tableRezultati.setShowHorizontalLines(false);
+			tableRezultati.getTableHeader().setReorderingAllowed(false);
+		}
+		return tableRezultati;
+	}
+	public JTable getTableTimovi() {
+		if (tableTimovi == null) {
+			tableTimovi = new JTable();
+			tableTimovi.setModel(new TimTableModel());
+			tableTimovi.setShowVerticalLines(false);
+			tableTimovi.setShowGrid(false);
+			tableTimovi.setShowHorizontalLines(false);
+			tableTimovi.getTableHeader().setReorderingAllowed(false);
+		}
+		return tableTimovi;
+	}
+	private JPanel getPanelEastTimovi() {
+		if (panelEastTimovi == null) {
+			panelEastTimovi = new JPanel();
+			panelEastTimovi.setPreferredSize(new Dimension(150, 0));
+			panelEastTimovi.add(getBtnPrikaziTimove());
+			panelEastTimovi.add(getBtnPrikaziVozace_1());
+		}
+		return panelEastTimovi;
+	}
+	private JButton getBtnPrikaziTimove() {
+		if (btnPrikaziTimove == null) {
+			btnPrikaziTimove = new JButton("Prikazi timove");
+			btnPrikaziTimove.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.prikaziSveTimove();
+				}
+			});
+			btnPrikaziTimove.setContentAreaFilled(false);
+		}
+		return btnPrikaziTimove;
+	}
+	private JButton getBtnPrikaziVozace_1() {
+		if (btnPrikaziVozace_1 == null) {
+			btnPrikaziVozace_1 = new JButton("Prikazi vozace");
+			btnPrikaziVozace_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					TimTableModel model=(TimTableModel) tableTimovi.getModel();
+					String s=model.vratiSelektovaniTim(tableTimovi.getSelectedRow());
+					tabbedPane.setSelectedIndex(tabbedPane.getSelectedIndex()+1);
+					tableVozaci.setRowSelectionAllowed(true);
+					/////////////////////////////
+				}
+			});
+			btnPrikaziVozace_1.setContentAreaFilled(false);
+		}
+		return btnPrikaziVozace_1;
+	}
 }
