@@ -13,9 +13,19 @@ import com.google.gson.JsonObject;
 
 import domenske_klase.Rezultat;
 import sistemski_kontroler.SistemskiKontroler;
-
+/**
+ * Klasa koja prestavlja rezultate jednog vozaca. 
+ * @author Monika Milenkovic
+ * @author Jelena Milev
+ * @author Dusko Milosevic
+ * @version 1.0
+ */
 public class SORezultatiPoVozacu {
-
+	/**
+	 * Ukupni rezultati vozaca na svim trkama na kojima je vozio.
+	 * @return rez listu rezultata vozaca
+	 * @throws Exception onemoguceno povezivanje sa fajlom
+	 */
 	public static LinkedList<String> izvrsi(String prezime) throws IOException {
 		LinkedList<String> rez = new LinkedList<>();
 

@@ -9,8 +9,19 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import domenske_klase.Tim;
-
+/**
+ * Klasa koja predstavlja serijalizaciju timova.
+ * @author Monika Milenkovic
+ * @author Jelena Milev
+ * @author Dusko Milosevic
+ * @version 1.0
+ */
 public class SOSerijalTimoveUJson {
+	/**
+	 * Serijalizacija timova u json fajl.
+	 * @param t lista timova
+	 * @throws Exception  onemoguceno povezivanje sa fajlom
+	 */
 	public static void izvrsi(LinkedList<Tim> t) throws Exception {
 		FileWriter writer = new FileWriter("data/timovi.json");
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();

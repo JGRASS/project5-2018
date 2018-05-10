@@ -10,9 +10,9 @@ import com.google.gson.JsonArray;
 import domenske_klase.Trka;
 /**
  * Klasa koja predstavlja deserijalizaciju timova koji ucestvuju na trci Formule 1
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Milosevic
  * @version 1.0
  */
 public class SODeserijalTrkeIzJson {

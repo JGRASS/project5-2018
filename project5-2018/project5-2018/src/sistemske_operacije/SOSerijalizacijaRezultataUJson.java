@@ -10,9 +10,22 @@ import com.google.gson.JsonObject;
 
 import domenske_klase.Rezultat;
 import sistemski_kontroler.SistemskiKontroler;
-
+/**
+ * Klasa koja predstavlja serijalizaciju rezultata.
+ * @author Monika Milenkovic
+ * @author Jelena Milev
+ * @author Dusko Milosevic
+ * @version 1.0
+ */
 public class SOSerijalizacijaRezultataUJson {
-	
+	/**
+	 * Serijalizacija rezultata po trci u internom json fajlu.
+	 * @param r lista rezultata
+	 * @param runda broj trke
+	 * @param nazivTrke naziv trke
+	 * @throws Exception onemoguceno povezivanje sa fajlom
+	 */
+
 	public static void izvrsi(LinkedList<Rezultat> r, int runda,String nazivTrke) throws Exception {
 		JsonArray c = new JsonArray();
 		/*

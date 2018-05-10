@@ -26,7 +26,6 @@ import sistemske_operacije.SOGetContent;
 import sistemske_operacije.SOPoslednjeAzuriranje;
 import sistemske_operacije.SORangListaTimova;
 import sistemske_operacije.SORangListaVozaca;
-import sistemske_operacije.SORangListaVozacaPoTrci;
 import sistemske_operacije.SORezultatiPoVozacu;
 import sistemske_operacije.SOSerijalTimoveUJson;
 import sistemske_operacije.SOSerijalTrkeUJson;
@@ -176,10 +175,6 @@ public class SistemskiKontroler {
 
 	public LinkedList<Tim> rangListaTimova() throws Exception {
 		return SORangListaTimova.izvrsi();
-	}
-
-	public void rangListaVozacaPoTrci(String prezime, String nazivTrke) throws Exception {
-		SORangListaVozacaPoTrci.izvrsi(prezime, nazivTrke);
 	}
 	public static LinkedList<String> rezultatiPoVozacu(String prezime) throws IOException{
 		return SORezultatiPoVozacu.izvrsi(prezime);

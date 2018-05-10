@@ -8,9 +8,9 @@ import domenske_klase.Vozac;
 import sistemski_kontroler.SistemskiKontroler;
 /**
  * Klasa koja predstavlja dodelu poena vozacima koji ucestvuju na trci Formule 1
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Miloševic
  * @version 1.0
  */
 public class SODodajPoeneVozacima {

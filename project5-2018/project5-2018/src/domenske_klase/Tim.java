@@ -5,9 +5,9 @@ import java.util.LinkedList;
 import com.google.gson.annotations.SerializedName;
 /**
  * Klasa koja predstavlja tim na trci Formule 1
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Milosevic
  * @version 1.0
  */
 public class Tim {

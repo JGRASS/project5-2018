@@ -3,9 +3,9 @@ package domenske_klase;
 import java.util.LinkedList;
 /**
  * Klasa koja predstavlja trku Formule 1
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Milosevic
  * @version 1.0
  */
 public class Trka {

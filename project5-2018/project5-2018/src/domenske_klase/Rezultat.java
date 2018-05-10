@@ -1,9 +1,9 @@
 package domenske_klase;
 /**
  * Klasa koja predstavlja  rezultat za jednog vozaca na trci Formule 1
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Milosevic
  * @version 1.0
  */
 

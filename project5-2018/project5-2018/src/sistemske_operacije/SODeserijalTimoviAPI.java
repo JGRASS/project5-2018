@@ -11,9 +11,9 @@ import domenske_klase.Tim;
 import sistemski_kontroler.SistemskiKontroler;
 /**
  * Klasa koja predstavlja deserijalizaciju timova koji ucestvuju na trci Formule 1
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Miloševic
  * @version 1.0
  */
 public class SODeserijalTimoviAPI {

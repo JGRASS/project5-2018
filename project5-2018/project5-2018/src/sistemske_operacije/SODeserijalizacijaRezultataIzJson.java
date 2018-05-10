@@ -11,9 +11,9 @@ import com.google.gson.JsonObject;
 import domenske_klase.Rezultat;
 /**
  * Klasa koja predstavlja deserijalizaciju rezultata trke Formule 1
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Milosevic
  * @version 1.0
  */
 public class SODeserijalizacijaRezultataIzJson {

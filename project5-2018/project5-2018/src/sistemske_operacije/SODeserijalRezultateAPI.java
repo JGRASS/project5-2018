@@ -16,9 +16,9 @@ import domenske_klase.Vozac;
 import sistemski_kontroler.SistemskiKontroler;
 /**
  * Klasa koja predstavlja deserijalizaciju/serijalizaciju rezultata na trci Formule 1
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Milosevic
  * @version 1.0
  */
 public class SODeserijalRezultateAPI {

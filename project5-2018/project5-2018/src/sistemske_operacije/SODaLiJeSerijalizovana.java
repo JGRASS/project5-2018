@@ -7,9 +7,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 /**
  * Klasa koja proverava da li je rezultat serijalizovan.
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Milosevic
  * @version 1.0
  */
 public class SODaLiJeSerijalizovana {

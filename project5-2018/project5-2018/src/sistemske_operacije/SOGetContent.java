@@ -7,9 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 /**
  * Klasa koja predstavlja preuzimanje sadrzaja sa interneta
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Milosevic
  * @version 1.0
  */
 public class SOGetContent {

@@ -7,9 +7,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 /**
  * Klasa koja deserijalizuje sve rezultate sa trka Formule 1
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Milosevic
  * @version 1.0
  */
 public class SODeserijalCeoRezultat {

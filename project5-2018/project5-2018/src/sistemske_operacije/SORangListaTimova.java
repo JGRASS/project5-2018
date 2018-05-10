@@ -11,14 +11,18 @@ import com.google.gson.JsonObject;
 import domenske_klase.Tim;
 import sistemski_kontroler.SistemskiKontroler;
 /**
- * Klasa koja predstavlja deserijalizaciju vremena poslednjeg preuzimanja podataka sa interneta o trci Formule 1
- * @author Monika Milenkovi�
+ * Klasa koja predstavlja rangiranje timova.
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Du�ko Milo�evi�
+ * @author Dusko Milosevic
  * @version 1.0
  */
 public class SORangListaTimova {
-
+	/**
+	 * Rangiranje timova po ukupnim poenima i pobedama.
+	 * @return tSort listu timova
+	 * @throws Exception onemoguceno povezivanje sa fajlom
+	 */
 	public static LinkedList<Tim> izvrsi() throws Exception {
 		LinkedList<Tim> t = SistemskiKontroler.deserijalTimoveIzJson();
 		LinkedList<Tim> tSort = new LinkedList<>();

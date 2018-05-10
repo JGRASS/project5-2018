@@ -10,9 +10,19 @@ import com.google.gson.JsonObject;
 
 import domenske_klase.Vozac;
 import sistemski_kontroler.SistemskiKontroler;
-
+/**
+ * Klasa koja predstavlja rangiranje vozaca.
+ * @author Monika Milenkovic
+ * @author Jelena Milev
+ * @author Dusko Milosevic
+ * @version 1.0
+ */
 public class SORangListaVozaca {
-	
+	/**
+	 * Rangiranje vozaca po ukupnim poenima i pobedama.
+	 * @return vSort listu vozaca
+	 * @throws Exception onemoguceno povezivanje sa fajlom
+	 */
 	public static LinkedList<Vozac> izvrsi() throws Exception{
         LinkedList<Vozac> v=SistemskiKontroler.deserijalVozaceIzJson();
         LinkedList<Vozac> vSort=new LinkedList<>();

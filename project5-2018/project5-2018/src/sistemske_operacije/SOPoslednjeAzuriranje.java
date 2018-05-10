@@ -7,9 +7,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 /**
  * Klasa koja predstavlja deserijalizaciju vremena poslednjeg preuzimanja podataka sa interneta o trci Formule 1
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Milosevic
  * @version 1.0
  */
 public class SOPoslednjeAzuriranje {

@@ -9,9 +9,19 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import domenske_klase.Vozac;
-
+/**
+ * Klasa koja predstavlja serijalizaciju vozaca.
+ * @author Monika Milenkovic
+ * @author Jelena Milev
+ * @author Dusko Milosevic
+ * @version 1.0
+ */
 public class SOSerijalVozaceUJson {
-
+	/**
+	 * Serijalizacija vozaca u interni json fajl.
+	 * @param v lista vozaca
+	 * @throws Exception onemoguceno povezivanje sa fajlom
+	 */
 	public static void izvrsi(LinkedList<Vozac> v) throws Exception {
 		FileWriter writer = new FileWriter("data/vozaci.json");
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();

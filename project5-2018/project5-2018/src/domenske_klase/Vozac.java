@@ -3,10 +3,9 @@ package domenske_klase;
 import com.google.gson.annotations.SerializedName;
 /**
  * Klasa koja predstavlja vozaca na trci Formule 1
-<<<<<<< HEAD
- * @author Monika Milenkoviæ
+ * @author Monika Milenkovic
  * @author Jelena Milev
- * @author Duško Miloševiæ
+ * @author Dusko Miloševic
  * @version 1.0
  */
 public class Vozac {
