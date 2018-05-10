@@ -46,7 +46,7 @@ public class RezultatTableModel extends AbstractTableModel {
 	}
 
 	public void staviSveRezultateUModel(LinkedList<Rezultat> rez) throws Exception {
-		if (rez.isEmpty()) throw new RuntimeException("Trka se jos uvek nije odzala");
+		if (rez.isEmpty()) throw new RuntimeException("Trka se jos uvek nije odrzala");
 			this.rezultati = rez;
 			fireTableDataChanged();
 		

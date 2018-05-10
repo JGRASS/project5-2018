@@ -36,6 +36,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.awt.Cursor;
+import javax.swing.JMenuItem;
+import javax.swing.JSeparator;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GlavniProzor extends JFrame {
 
@@ -61,7 +65,7 @@ public class GlavniProzor extends JFrame {
 	private JScrollPane scrollPaneTimovi;
 	private JScrollPane scrollPaneRez;
 	private JPanel tabRez;
-	private JTextArea textAreaRezultati=null;
+	private JTextArea textAreaRezultati = null;
 	private JPanel tabRezSouth;
 	private JButton btnZatvoriRez;
 	private JPanel panelTrke;
@@ -80,13 +84,31 @@ public class GlavniProzor extends JFrame {
 	private JButton btnPrikaziTimove;
 	private JButton btnPrikaziVozace_1;
 	private JButton btnRangirajTimove;
+	private JMenu mnOpen;
+	private JMenuItem mntmTrke;
+	private JMenuItem mntmTimove;
+	private JMenuItem mntmVozaci;
+	private JMenu mnClose;
+	private JMenuItem mntmTrke_1;
+	private JMenuItem mntmTimove_1;
+	private JMenuItem mntmVozace;
+	private JSeparator separator;
+	private JMenuItem mntmExit;
+	private JMenu mnHelp;
+	private JMenuItem mntmAbout;
 
 	/**
 	 * Create the frame.
 	 */
 	public GlavniProzor() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				GUIKontroler.izlaz();
+			}
+		});
 		setTitle("Aplikacija");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
@@ -95,9 +117,9 @@ public class GlavniProzor extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.add(getCentralPanel(), BorderLayout.CENTER);
 		contentPane.add(getSouthPanel(), BorderLayout.SOUTH);
-		
+
 		try {
-			vozaci=GUIKontroler.sistemskiKontroler.deserijalVozaceIzJson();
+			vozaci = GUIKontroler.sistemskiKontroler.deserijalVozaceIzJson();
 			textFieldAzuriranje.setText(GUIKontroler.sistemskiKontroler.poslednjeAzuriranje());
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
@@ -133,8 +155,13 @@ public class GlavniProzor extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					try {
 						GUIKontroler.sistemskiKontroler.deserijalRezultateAPI();
+						GUIKontroler.sistemskiKontroler.dodeliVozacimaTimove();
+						GUIKontroler.sistemskiKontroler.dodeliTimovimaVozace();
 						GUIKontroler.sistemskiKontroler.dodajPoeneTimovima();
 						GUIKontroler.sistemskiKontroler.dodajPoeneVozacima();
+						
+						
+						textFieldAzuriranje.setText(GUIKontroler.sistemskiKontroler.poslednjeAzuriranje());
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -169,6 +196,7 @@ public class GlavniProzor extends JFrame {
 		if (menuBar == null) {
 			menuBar = new JMenuBar();
 			menuBar.add(getMnFile());
+			menuBar.add(getMnHelp());
 		}
 		return menuBar;
 	}
@@ -176,6 +204,10 @@ public class GlavniProzor extends JFrame {
 	private JMenu getMnFile() {
 		if (mnFile == null) {
 			mnFile = new JMenu("File");
+			mnFile.add(getMnOpen());
+			mnFile.add(getMnClose());
+			mnFile.add(getSeparator());
+			mnFile.add(getMntmExit());
 		}
 		return mnFile;
 	}
@@ -455,11 +487,18 @@ public class GlavniProzor extends JFrame {
 					try {
 						GUIKontroler.prikaziSveRezultate();
 					} catch (Exception e1) {
-						int t=tabbedPane.getSelectedIndex();
-						if(t!=-1) 
+						int t = tabbedPane.getSelectedIndex();
+						if (t != -1)
 							tabbedPane.remove(t);
-						tabbedPane.setSelectedIndex(0);
-						JOptionPane.showMessageDialog(null, e1.getMessage(), "Obavestenje", JOptionPane.INFORMATION_MESSAGE);
+						for (int j = 0; j < tabbedPane.getTabCount(); j++) {
+							if(tabbedPane.getTitleAt(j).equals("Trke")) {
+								tabbedPane.setSelectedIndex(j);
+								break;
+							}
+								
+						}						
+						JOptionPane.showMessageDialog(null, e1.getMessage(), "Obavestenje",
+								JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 			});
@@ -525,6 +564,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return tableRezultati;
 	}
+
 	public JTable getTableTimovi() {
 		if (tableTimovi == null) {
 			tableTimovi = new JTable();
@@ -543,6 +583,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return tableTimovi;
 	}
+
 	private JPanel getPanelEastTimovi() {
 		if (panelEastTimovi == null) {
 			panelEastTimovi = new JPanel();
@@ -553,6 +594,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return panelEastTimovi;
 	}
+
 	private JButton getBtnPrikaziTimove() {
 		if (btnPrikaziTimove == null) {
 			btnPrikaziTimove = new JButton("Prikazi sve timove");
@@ -565,6 +607,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnPrikaziTimove;
 	}
+
 	private JButton getBtnPrikaziVozace_1() {
 		if (btnPrikaziVozace_1 == null) {
 			btnPrikaziVozace_1 = new JButton("Prikazi vozace");
@@ -572,33 +615,32 @@ public class GlavniProzor extends JFrame {
 			btnPrikaziVozace_1.setEnabled(false);
 			btnPrikaziVozace_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					TimTableModel model=(TimTableModel) tableTimovi.getModel();
-					String tim=model.vratiSelektovaniTim(tableTimovi.getSelectedRow());
-					int i;					
-					LinkedList<Vozac> vozaciTim=new LinkedList<>();
+					TimTableModel model = (TimTableModel) tableTimovi.getModel();
+					String tim = model.vratiSelektovaniTim(tableTimovi.getSelectedRow());
+					int i;
+					LinkedList<Vozac> vozaciTim = new LinkedList<>();
 					for (i = 0; i < vozaci.size(); i++) {
-						if(vozaci.get(i).getTim().equals(tim)) {
+						if (vozaci.get(i).getTim().equals(tim)) {
 							vozaciTim.add(vozaci.get(i));
 							break;
 						}
 					}
-					for (int j=i+1; j < vozaci.size(); j++) {
-						if(vozaci.get(j).getTim().equals(tim)) {
+					for (int j = i + 1; j < vozaci.size(); j++) {
+						if (vozaci.get(j).getTim().equals(tim)) {
 							vozaciTim.add(vozaci.get(j));
 							break;
 						}
 					}
 					GUIKontroler.prikaziVozace(vozaciTim);
-					tabbedPane.setSelectedIndex(tabbedPane.getSelectedIndex()+1);
-					
-					
-					
+					tabbedPane.setSelectedIndex(tabbedPane.getSelectedIndex() + 1);
+
 				}
 			});
 			btnPrikaziVozace_1.setContentAreaFilled(false);
 		}
 		return btnPrikaziVozace_1;
 	}
+
 	private JButton getBtnRangirajTimove() {
 		if (btnRangirajTimove == null) {
 			btnRangirajTimove = new JButton("Rangiraj timove");
@@ -610,5 +652,152 @@ public class GlavniProzor extends JFrame {
 			btnRangirajTimove.setContentAreaFilled(false);
 		}
 		return btnRangirajTimove;
+	}
+
+	private JMenu getMnOpen() {
+		if (mnOpen == null) {
+			mnOpen = new JMenu("Open...");
+			mnOpen.add(getMntmTrke());
+			mnOpen.add(getMntmTimove());
+			mnOpen.add(getMntmVozaci());
+		}
+		return mnOpen;
+	}
+
+	private JMenuItem getMntmTrke() {
+		if (mntmTrke == null) {
+			mntmTrke = new JMenuItem("Trke");
+			mntmTrke.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					tabbedPane.insertTab("Trke", null, getPanelTrke(), null, 0);
+					tabbedPane.setSelectedIndex(0);
+				}
+			});
+		}
+		return mntmTrke;
+	}
+
+	private JMenuItem getMntmTimove() {
+		if (mntmTimove == null) {
+			mntmTimove = new JMenuItem("Timovi");
+			mntmTimove.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					tabbedPane.insertTab("Timovi", null, getPanelTimovi(), null, 0);
+					tabbedPane.setSelectedIndex(0);
+				}
+			});
+		}
+		return mntmTimove;
+	}
+
+	private JMenuItem getMntmVozaci() {
+		if (mntmVozaci == null) {
+			mntmVozaci = new JMenuItem("Vozaci");
+			mntmVozaci.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					tabbedPane.insertTab("Vozaci", null, getPanelVozaci(), null, 0);
+					tabbedPane.setSelectedIndex(0);
+				}
+			});
+		}
+		return mntmVozaci;
+	}
+
+	private JMenu getMnClose() {
+		if (mnClose == null) {
+			mnClose = new JMenu("Close...");
+			mnClose.add(getMntmTrke_1());
+			mnClose.add(getMntmTimove_1());
+			mnClose.add(getMntmVozace());
+		}
+		return mnClose;
+	}
+
+	private JMenuItem getMntmTrke_1() {
+		if (mntmTrke_1 == null) {
+			mntmTrke_1 = new JMenuItem("Trke");
+			mntmTrke_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					for (int i = 0; i < tabbedPane.getTabCount(); i++) {
+						if (tabbedPane.getTitleAt(i).equals("Trke")) {
+							tabbedPane.remove(i);
+							break;
+						}
+					}
+				}
+			});
+		}
+		return mntmTrke_1;
+	}
+
+	private JMenuItem getMntmTimove_1() {
+		if (mntmTimove_1 == null) {
+			mntmTimove_1 = new JMenuItem("Timovi");
+			mntmTimove_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					for (int i = 0; i < tabbedPane.getTabCount(); i++) {
+						if (tabbedPane.getTitleAt(i).equals("Timovi")) {
+							tabbedPane.remove(i);
+							break;
+						}
+					}
+				}
+			});
+		}
+		return mntmTimove_1;
+	}
+
+	private JMenuItem getMntmVozace() {
+		if (mntmVozace == null) {
+			mntmVozace = new JMenuItem("Vozaci");
+			mntmVozace.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					for (int i = 0; i < tabbedPane.getTabCount(); i++) {
+						if (tabbedPane.getTitleAt(i).equals("Vozaci")) {
+							tabbedPane.remove(i);
+							break;
+						}
+					}
+				}
+			});
+		}
+		return mntmVozace;
+	}
+
+	private JSeparator getSeparator() {
+		if (separator == null) {
+			separator = new JSeparator();
+		}
+		return separator;
+	}
+
+	private JMenuItem getMntmExit() {
+		if (mntmExit == null) {
+			mntmExit = new JMenuItem("Exit");
+			mntmExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.izlaz();
+				}
+			});
+		}
+		return mntmExit;
+	}
+	private JMenu getMnHelp() {
+		if (mnHelp == null) {
+			mnHelp = new JMenu("Help");
+			mnHelp.add(getMntmAbout());
+		}
+		return mnHelp;
+	}
+	private JMenuItem getMntmAbout() {
+		if (mntmAbout == null) {
+			mntmAbout = new JMenuItem("About...");
+			mntmAbout.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(null, "Aplikacija koja olaksava pracenje sampionata Formule 1\n Autori: Monika Milenkovic, Jelena Milev, Dusko Milosevic \n Kreirana: maja 2018.", "O aplikaciji", JOptionPane.INFORMATION_MESSAGE);
+				}
+			});
+		}
+		return mntmAbout;
 	}
 }
