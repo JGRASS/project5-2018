@@ -31,9 +31,29 @@ public class GUIKontroler {
 		});
 	}
 
-	public static void prikaziSveVozace(LinkedList<Vozac> vozaci) {
+	public static void prikaziSveVozace() {
 		VozaciTableModel model = (VozaciTableModel)(gp.getTableVozaci().getModel());
-		model.staviSveVozaceUModel(vozaci);
+		try {
+			model.staviSveVozaceUModel(sistemskiKontroler.deserijalVozaceIzJson());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void prikaziVozace(LinkedList<Vozac> vozaci) {
+		VozaciTableModel model = (VozaciTableModel)(gp.getTableVozaci().getModel());
+		model.staviSveVozaceUModel(vozaci);		
+	}
+	
+	public static void prikaziSveVozaceRangirane() {
+		VozaciTableModel model = (VozaciTableModel)(gp.getTableVozaci().getModel());
+		try {
+			model.staviSveVozaceUModel(sistemskiKontroler.rangListaVozaca());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static String selektovanoPrezime() {
@@ -68,7 +88,18 @@ public class GUIKontroler {
 	public static void prikaziSveTimove(){
 		TimTableModel model = (TimTableModel)(gp.getTableTimovi().getModel());
 		try {
-			model.staviSveTimoveUModel(SistemskiKontroler.deserijalTimoveIzJson());
+			model.staviSveTimoveUModel(sistemskiKontroler.deserijalTimoveIzJson());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void prikaziSveTimoveRangirane(){
+		TimTableModel model = (TimTableModel)(gp.getTableTimovi().getModel());
+		try {
+			model.staviSveTimoveUModel(sistemskiKontroler.rangListaTimova());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

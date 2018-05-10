@@ -7,12 +7,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
@@ -77,6 +79,7 @@ public class GlavniProzor extends JFrame {
 	private JPanel panelEastTimovi;
 	private JButton btnPrikaziTimove;
 	private JButton btnPrikaziVozace_1;
+	private JButton btnRangirajTimove;
 
 	/**
 	 * Create the frame.
@@ -94,9 +97,7 @@ public class GlavniProzor extends JFrame {
 		contentPane.add(getSouthPanel(), BorderLayout.SOUTH);
 		
 		try {
-			// vozaci=GUIKontroler.sistemskiKontroler.deserijalVozaciAPI();
-			GUIKontroler.sistemskiKontroler.dodeliVozacimaTimove();
-			vozaci = SistemskiKontroler.deserijalVozaceIzJson();
+			vozaci=GUIKontroler.sistemskiKontroler.deserijalVozaceIzJson();
 			textFieldAzuriranje.setText(GUIKontroler.sistemskiKontroler.poslednjeAzuriranje());
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
@@ -262,12 +263,12 @@ public class GlavniProzor extends JFrame {
 
 	private JButton getBtnPrikaziVozace() {
 		if (btnPrikaziVozace == null) {
-			btnPrikaziVozace = new JButton("Prikazi vozace");
+			btnPrikaziVozace = new JButton("Prikazi sve vozace");
 			btnPrikaziVozace.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			btnPrikaziVozace.setContentAreaFilled(false);
 			btnPrikaziVozace.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKontroler.prikaziSveVozace(vozaci);
+					GUIKontroler.prikaziSveVozace();
 				}
 			});
 		}
@@ -361,8 +362,7 @@ public class GlavniProzor extends JFrame {
 			btnRangiraj.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
-						vozaci = GUIKontroler.sistemskiKontroler.rangListaVozaca();
-						GUIKontroler.prikaziSveVozace(vozaci);
+						GUIKontroler.prikaziSveVozaceRangirane();
 					} catch (Exception e1) {
 						JOptionPane.showMessageDialog(null, e1.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
 					}
@@ -528,6 +528,13 @@ public class GlavniProzor extends JFrame {
 	public JTable getTableTimovi() {
 		if (tableTimovi == null) {
 			tableTimovi = new JTable();
+			tableTimovi.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					btnPrikaziVozace_1.setEnabled(true);
+
+				}
+			});
 			tableTimovi.setModel(new TimTableModel());
 			tableTimovi.setShowVerticalLines(false);
 			tableTimovi.setShowGrid(false);
@@ -541,13 +548,14 @@ public class GlavniProzor extends JFrame {
 			panelEastTimovi = new JPanel();
 			panelEastTimovi.setPreferredSize(new Dimension(150, 0));
 			panelEastTimovi.add(getBtnPrikaziTimove());
+			panelEastTimovi.add(getBtnRangirajTimove());
 			panelEastTimovi.add(getBtnPrikaziVozace_1());
 		}
 		return panelEastTimovi;
 	}
 	private JButton getBtnPrikaziTimove() {
 		if (btnPrikaziTimove == null) {
-			btnPrikaziTimove = new JButton("Prikazi timove");
+			btnPrikaziTimove = new JButton("Prikazi sve timove");
 			btnPrikaziTimove.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GUIKontroler.prikaziSveTimove();
@@ -560,17 +568,47 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnPrikaziVozace_1() {
 		if (btnPrikaziVozace_1 == null) {
 			btnPrikaziVozace_1 = new JButton("Prikazi vozace");
+			btnPrikaziVozace_1.setToolTipText("Prikaz vozaca odabranog tima");
+			btnPrikaziVozace_1.setEnabled(false);
 			btnPrikaziVozace_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					TimTableModel model=(TimTableModel) tableTimovi.getModel();
-					String s=model.vratiSelektovaniTim(tableTimovi.getSelectedRow());
+					String tim=model.vratiSelektovaniTim(tableTimovi.getSelectedRow());
+					int i;					
+					LinkedList<Vozac> vozaciTim=new LinkedList<>();
+					for (i = 0; i < vozaci.size(); i++) {
+						if(vozaci.get(i).getTim().equals(tim)) {
+							vozaciTim.add(vozaci.get(i));
+							break;
+						}
+					}
+					for (int j=i+1; j < vozaci.size(); j++) {
+						if(vozaci.get(j).getTim().equals(tim)) {
+							vozaciTim.add(vozaci.get(j));
+							break;
+						}
+					}
+					GUIKontroler.prikaziVozace(vozaciTim);
 					tabbedPane.setSelectedIndex(tabbedPane.getSelectedIndex()+1);
-					tableVozaci.setRowSelectionAllowed(true);
-					/////////////////////////////
+					
+					
+					
 				}
 			});
 			btnPrikaziVozace_1.setContentAreaFilled(false);
 		}
 		return btnPrikaziVozace_1;
+	}
+	private JButton getBtnRangirajTimove() {
+		if (btnRangirajTimove == null) {
+			btnRangirajTimove = new JButton("Rangiraj timove");
+			btnRangirajTimove.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.prikaziSveTimoveRangirane();
+				}
+			});
+			btnRangirajTimove.setContentAreaFilled(false);
+		}
+		return btnRangirajTimove;
 	}
 }
