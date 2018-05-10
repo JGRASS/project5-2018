@@ -8,8 +8,19 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
 import domenske_klase.Tim;
-
+/**
+ * Klasa koja predstavlja deserijalizaciju timova koji ucestvuju na trci Formule 1
+ * @author Monika Milenkoviæ
+ * @author Jelena Milev
+ * @author Duško Miloševiæ
+ * @version 1.0
+ */
 public class SODeserijalTimoveIzJson {
+	/**
+	 * Deserijalizacija timova iz interne baze.
+	 * @return t koja prestavlja listu timova
+	 * @throws Exception onemoguceno povezivanje
+	 */
 	public static LinkedList<Tim> izvrsi() throws Exception {
 		FileReader reader = new FileReader("data/timovi.json");
 		LinkedList<Tim> t = new LinkedList<>();

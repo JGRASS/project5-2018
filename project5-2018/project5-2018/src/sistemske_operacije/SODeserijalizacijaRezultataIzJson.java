@@ -9,9 +9,20 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import domenske_klase.Rezultat;
-
+/**
+ * Klasa koja predstavlja deserijalizaciju rezultata trke Formule 1
+ * @author Monika Milenkoviæ
+ * @author Jelena Milev
+ * @author Duško Miloševiæ
+ * @version 1.0
+ */
 public class SODeserijalizacijaRezultataIzJson {
-	
+	/**
+	 * Deserijalizacija rezultata za odredjenu trku.
+	 * @param nazivTrke String po kom se trazi odredjena trka iz fajla.
+	 * @return r rezultat trke
+	 * @throws Exception ako nije moguc pristup i citanje iz fajla.
+	 */
 	public static LinkedList<Rezultat> izvrsi(String nazivTrke) throws Exception {
 		FileReader reader = new FileReader("data/rezultati.json");
 		LinkedList<Rezultat> r = new LinkedList<>();

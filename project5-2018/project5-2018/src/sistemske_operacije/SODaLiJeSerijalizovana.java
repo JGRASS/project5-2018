@@ -5,9 +5,19 @@ import java.io.FileReader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-
+/**
+ * Klasa koja proverava da li je rezultat serijalizovan.
+ * @author Monika Milenkoviæ
+ * @author Jelena Milev
+ * @author Duško Miloševiæ
+ * @version 1.0
+ */
 public class SODaLiJeSerijalizovana {
-	
+	/**
+	 * Metoda koja cita podatke iz fajla i proverava da li je fajl prazan
+	 * @return a.size(); broj objekata koje sadrzi fajl
+	 * @throws Exception ako nije moguce pristupiti fajlu.
+	 */
 	public static int izvrsi() throws Exception {
 		FileReader reader = new FileReader("data/rezultati.json");
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();

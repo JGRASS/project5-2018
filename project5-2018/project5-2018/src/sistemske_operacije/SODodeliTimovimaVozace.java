@@ -5,8 +5,18 @@ import java.util.LinkedList;
 import domenske_klase.Tim;
 import domenske_klase.Vozac;
 import sistemski_kontroler.SistemskiKontroler;
-
+/**
+ * Klasa koja predstavlja dodelu vozaca timovima na trci Formule 1
+ * @author Monika Milenkoviæ
+ * @author Jelena Milev
+ * @author Duško Miloševiæ
+ * @version 1.0
+ */
 public class SODodeliTimovimaVozace {
+	/**
+	 * Dodela vozaca iz interne baze timovima za koje voze
+	 * @throws Exception onemoguceno povezivanje sa fajlovima
+	 */
 	public static void izvrsi() throws Exception {
 		LinkedList<Tim> t = SistemskiKontroler.deserijalTimoveIzJson();
 		LinkedList<Vozac> v = SistemskiKontroler.deserijalVozaceIzJson();

@@ -5,9 +5,19 @@ import java.util.LinkedList;
 import domenske_klase.Tim;
 import domenske_klase.Vozac;
 import sistemski_kontroler.SistemskiKontroler;
-
+/**
+ * Klasa koja predstavlja dodelu poena timovima koji ucestvuju na trci Formule 1
+ * @author Monika Milenkoviæ
+ * @author Jelena Milev
+ * @author Duško Miloševiæ
+ * @version 1.0
+ */
 public class SODodajPoeneTimovima {
-	
+	/**
+	 * Dodela poena timovima
+	 * 
+	 * @throws Exception onemoguceno povezivanje sa fajlovima
+	 */
 	public static void izvrsi() throws Exception{
 		LinkedList<Vozac> v = SistemskiKontroler.deserijalVozaceIzJson();
 		LinkedList<Tim> t = SistemskiKontroler.deserijalTimoveIzJson();

@@ -10,7 +10,13 @@ import com.google.gson.JsonObject;
 
 import domenske_klase.Tim;
 import sistemski_kontroler.SistemskiKontroler;
-
+/**
+ * Klasa koja predstavlja deserijalizaciju vremena poslednjeg preuzimanja podataka sa interneta o trci Formule 1
+ * @author Monika Milenkoviæ
+ * @author Jelena Milev
+ * @author Duško Miloševiæ
+ * @version 1.0
+ */
 public class SORangListaTimova {
 
 	public static void izvrsi() throws Exception {

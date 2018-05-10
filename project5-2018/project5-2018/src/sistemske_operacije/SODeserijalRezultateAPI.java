@@ -14,9 +14,18 @@ import domenske_klase.Rezultat;
 import domenske_klase.Trka;
 import domenske_klase.Vozac;
 import sistemski_kontroler.SistemskiKontroler;
-
+/**
+ * Klasa koja predstavlja deserijalizaciju/serijalizaciju rezultata na trci Formule 1
+ * @author Monika Milenkoviæ
+ * @author Jelena Milev
+ * @author Duško Miloševiæ
+ * @version 1.0
+ */
 public class SODeserijalRezultateAPI {
-	
+	/**
+	 * Metoda koja vrsi serijalizaciju svih rezultata sa url-a koje nemamo u internoj bazi, i vreme poslednjeg azuriranja,
+	 * @throws Exception ako nije moguca konekcija sa internetom, pristup fajlu...
+	 */
 	public static void izvrsi() throws Exception {
 		/////////////////////////////////////////////////////////////////////////////////////////
 		Date d = new Date();

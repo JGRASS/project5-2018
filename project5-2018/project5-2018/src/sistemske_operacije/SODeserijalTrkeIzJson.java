@@ -8,9 +8,19 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
 import domenske_klase.Trka;
-
+/**
+ * Klasa koja predstavlja deserijalizaciju timova koji ucestvuju na trci Formule 1
+ * @author Monika Milenkoviæ
+ * @author Jelena Milev
+ * @author Duško Miloševiæ
+ * @version 1.0
+ */
 public class SODeserijalTrkeIzJson {
-	
+	/**
+	 * Deserijalizuje trke iz json-a iz interne baze i vraca kao listu trka
+	 * @return t lista trka
+	 * @throws Exception onemoguceno povezivanje sa fajlom
+	 */
 	public static LinkedList<Trka> izvrsi() throws Exception {
 		FileReader reader = new FileReader("data/trke.json");
 		LinkedList<Trka> t = new LinkedList<>();

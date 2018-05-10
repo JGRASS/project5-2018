@@ -6,9 +6,19 @@ import domenske_klase.Rezultat;
 import domenske_klase.Trka;
 import domenske_klase.Vozac;
 import sistemski_kontroler.SistemskiKontroler;
-
+/**
+ * Klasa koja predstavlja dodelu poena vozacima koji ucestvuju na trci Formule 1
+ * @author Monika Milenkoviæ
+ * @author Jelena Milev
+ * @author Duško Miloševiæ
+ * @version 1.0
+ */
 public class SODodajPoeneVozacima {
-	
+	/**
+	 * Dodela poena vozacima
+	 * 
+	 * @throws Exception onemoguceno povezivanje sa fajlovima
+	 */
 	public static void izvrsi() throws Exception {
 		LinkedList<Trka> t = SistemskiKontroler.deserijalTrkeIzJson();
 		LinkedList<Vozac> v = SistemskiKontroler.deserijalVozaceIzJson();
