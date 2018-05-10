@@ -111,16 +111,28 @@ public class Trka {
 			throw new RuntimeException("Nije unet datum");
 		this.datum = datum;
 	}
-	
-	/*public LinkedList<Rezultat> getRezultat() {
+	/**
+	 * vraca listu rezultata
+	 * @return listu rezultata rezultati 
+	 */
+	public LinkedList<Rezultat> getRezultat() {
 		return rezultati;
-	}*/
-	
-	/*public void setRezultat(LinkedList<Rezultat> rezultat) {
+	}
+	/**
+	 * Postavlja listu rezultata
+	 * @param rezultat nova lista rezulatata
+	 *  @throws java.lang.RuntimeException ako je 
+	 * unet
+	 *   <ul> 
+	 * 
+	 * <li>null objekat</li>
+	 * </ul>
+	 */
+	public void setRezultat(LinkedList<Rezultat> rezultat) {
 		if(rezultati == null)
 			throw new RuntimeException("Nije unet rezultat");
 		this.rezultati = rezultati;
-	}*/
+	}
 	/**
 	 * vraca vrednost atributa runda
 	 * @return runda kao int
@@ -135,7 +147,7 @@ public class Trka {
 	 * 
 	 * @throws java.lang.RuntimeException ako je 
 	 * unet
-	 *   <ul> 
+	 *  <ul> 
 	 * 
 	 * <li>broj manji od 1</li>
 	 * 
