@@ -9,7 +9,7 @@ import domenske_klase.Vozac;
 
 public class VozaciTableModel extends AbstractTableModel {
 
-	private final String[] kolone = new String[] { "Ime", "Prezime", "Tim", "Poeni", "Pobede", "Drzava" };
+	private final String[] kolone = new String[] { "Ime", "Prezime", "Tim", "Poeni", "Pobede", "Nacionalnost" };
 	private LinkedList<Vozac> vozaci = new LinkedList<Vozac>();
 
 	@Override
