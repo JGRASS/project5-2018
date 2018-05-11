@@ -43,7 +43,7 @@ public class SOSerijalizacijaRezultataUJson {
 		}
 		String rezZaSer = gson.toJson(a);
 		
-		System.out.println(rezZaSer);
+//		System.out.println(rezZaSer);
 		String zaSer = "{" + "\"nazivTrke\"" + ":" + "\"" + nazivTrke + "\"" + "," + "\"runda\"" + ":" + runda
 				 + "," + "\"serijal\"" + ":"  + true + ","+ "\"Rezultat\""+":" + rezZaSer + "}";
 		JsonObject jo = gson.fromJson(zaSer, JsonObject.class);
