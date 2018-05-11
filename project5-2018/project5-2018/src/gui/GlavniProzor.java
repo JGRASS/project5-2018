@@ -40,6 +40,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Toolkit;
 
 public class GlavniProzor extends JFrame {
 
@@ -101,6 +103,8 @@ public class GlavniProzor extends JFrame {
 	 * Create the frame.
 	 */
 	public GlavniProzor() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GlavniProzor.class.getResource("/logo/logo.ico")));
+		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
