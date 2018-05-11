@@ -103,7 +103,7 @@ public class GlavniProzor extends JFrame {
 	 * Create the frame.
 	 */
 	public GlavniProzor() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GlavniProzor.class.getResource("/logo/logo.ico")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GlavniProzor.class.getResource("/LogoFormula/logoformula.png")));
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -111,7 +111,7 @@ public class GlavniProzor extends JFrame {
 				GUIKontroler.izlaz();
 			}
 		});
-		setTitle("Aplikacija");
+		setTitle("Formula 1 Assistant");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 700, 400);
 		setJMenuBar(getMenuBar_1());

@@ -37,55 +37,6 @@ public class SistemskiKontroler {
 	public static final String CONSTRUCTORS_API_URL = "http://ergast.com/api/f1/2018/constructors.json";
 	public static final String RACES_API_URL = "http://ergast.com/api/f1/2018.json";
 
-	/*public static void main(String[] args) {
-		try {
-
-			// PullAPIData.deserijalRezultateAPI();
-			System.out.println(SistemskiKontroler.poslednjeAzuriranje());
-			LinkedList<Rezultat> r = new LinkedList<>();
-			r = SistemskiKontroler.deserijalizacijaRezultataIzJson("Chinese Grand Prix");
-			for (int i = 0; i < r.size(); i++) {
-				System.out.println(r.get(i));
-			}
-
-			// PullAPIData.serijalTrkeUJson(PullAPIData.deserijalTrkeAPI());
-			LinkedList<Trka> t = new LinkedList<>();
-			t = SistemskiKontroler.deserijalTrkeIzJson();
-			for (int i = 0; i < t.size(); i++) {
-				System.out.println(t.get(i));
-			}
-			// PullAPIData.serijalVozaceUJson(PullAPIData.deserijalVozaciAPI());
-			LinkedList<Vozac> v = new LinkedList<>();
-			v = SistemskiKontroler.deserijalVozaceIzJson();
-
-			for (int i = 0; i < v.size(); i++) {
-				System.out.println(v.get(i));
-			}
-
-			// PullAPIData.serijalTimoveUJson(PullAPIData.deserijalTimoviAPI());
-			LinkedList<Tim> tim = new LinkedList<>();
-			tim = SistemskiKontroler.deserijalTimoveIzJson();
-
-			for (int i = 0; i < tim.size(); i++) {
-				System.out.println(tim.get(i));
-			}
-			SistemskiKontroler.dodeliVozacimaTimove();
-			SistemskiKontroler.dodeliTimovimaVozace();
-			SistemskiKontroler.dodajPoeneVozacima();
-			SistemskiKontroler.dodajPoeneTimovima();
-			rangListaVozacaPoTrci("Vettel", "Australian Grand Prix");
-			SistemskiKontroler.rangListaVozaca();
-			SistemskiKontroler.rangListaTimova();
-			
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}*/
-
-	
 	public static String getContent(String driversApiUrl) throws IOException {
 		return SOGetContent.izvrsi(driversApiUrl);
 	}
