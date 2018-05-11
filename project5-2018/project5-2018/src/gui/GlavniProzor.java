@@ -111,7 +111,7 @@ public class GlavniProzor extends JFrame {
 				GUIKontroler.izlaz();
 			}
 		});
-		setTitle("Formula 1 Assistant");
+		setTitle("Formula 1 Asistent");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 700, 400);
 		setJMenuBar(getMenuBar_1());
